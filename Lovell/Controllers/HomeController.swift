@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeController.swift
 //  Lovell
 //
 //  Created by TJ Barber on 9/13/17.
@@ -54,14 +54,14 @@ extension HomeController {
     }
     
     func displayUIElements() {
+        self.updateBackgroundsFromMotion()
+        
         UIView.animate(withDuration: 0.8, delay: 1.5, options: .curveEaseIn, animations: {
             self.exploreImage.alpha = 0.5
             for imageView in [self.marsImage, self.earthImage] {
                 imageView?.alpha = 0.4
             }
-        }, completion: { finished in
-            self.updateBackgroundsFromMotion()
-        })
+        }, completion: nil)
         
         UIView.animate(withDuration: 0.8, delay: 2.5, options: .curveEaseIn, animations: {
             for label in [self.exploreLabel, self.marsLabel, self.homeLabel] {

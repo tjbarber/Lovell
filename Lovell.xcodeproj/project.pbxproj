@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC00DE2C1F6B1F930051905F /* MarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2B1F6B1F930051905F /* MarsController.swift */; };
+		AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2D1F6B1FA40051905F /* EarthController.swift */; };
+		AC00DE301F6B1FB50051905F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2F1F6B1FB50051905F /* ExploreController.swift */; };
+		AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE311F6B228D0051905F /* DetailViewController.swift */; };
 		ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */; };
 		ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */; };
 		ACCA969E1F69B4FB00DD3A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCA969C1F69B4FB00DD3A8F /* Main.storyboard */; };
@@ -27,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC00DE2B1F6B1F930051905F /* MarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsController.swift; sourceTree = "<group>"; };
+		AC00DE2D1F6B1FA40051905F /* EarthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthController.swift; sourceTree = "<group>"; };
+		AC00DE2F1F6B1FB50051905F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		AC00DE311F6B228D0051905F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -111,6 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */,
+				AC00DE311F6B228D0051905F /* DetailViewController.swift */,
+				AC00DE2B1F6B1F930051905F /* MarsController.swift */,
+				AC00DE2D1F6B1FA40051905F /* EarthController.swift */,
+				AC00DE2F1F6B1FB50051905F /* ExploreController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,7 +256,11 @@
 			files = (
 				ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */,
 				ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */,
+				AC00DE2C1F6B1F930051905F /* MarsController.swift in Sources */,
+				AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */,
 				ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */,
+				AC00DE301F6B1FB50051905F /* ExploreController.swift in Sources */,
+				AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

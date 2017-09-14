@@ -13,6 +13,7 @@ class HomeController: UIViewController {
     let goldenRatio = 1.618
     var exploreContainingViewHeightConstraint: NSLayoutConstraint?
     var motionTimer: Timer?
+    var isLaunching = true
     
     @IBOutlet weak var logoStackView: UIStackView!
     @IBOutlet weak var exploreContainingView: UIView!
@@ -25,18 +26,34 @@ class HomeController: UIViewController {
     @IBOutlet weak var earthImage: UIImageView!
     @IBOutlet weak var homeLabel: UILabel!
     
+    @IBAction func marsTileTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: MarsController.segueIdentifier, sender: self)
+    }
+    
+    @IBAction func earthTileTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: EarthController.segueIdentifier, sender: self)
+    }
+    
+    @IBAction func exploreTileTapped(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: ExploreController.segueIdentifier, sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.hideUIElements()
+        if isLaunching {
+            self.hideUIElements()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.displayUIElements()
+        if isLaunching {
+            self.displayUIElements()
+        }
     }
     
     override func updateViewConstraints() {
@@ -64,6 +81,7 @@ extension HomeController {
     }
     
     func displayUIElements() {
+        isLaunching = false
         self.updateBackgroundsFromMotion()
         
         UIView.animate(withDuration: 0.8, delay: 1.5, options: .curveEaseIn, animations: {
@@ -96,11 +114,10 @@ extension HomeController {
                     let pitch = data.attitude.pitch
                     let roll = data.attitude.roll
                     
-                    self.exploreContainingView.bounds = CGRect(x: CGFloat(roll * 10), y: CGFloat(pitch * 10), width: self.exploreContainingView.bounds.width, height: self.exploreContainingView.bounds.height)
-                    
-                    self.marsContainingView.bounds = CGRect(x: CGFloat(roll * 10), y: CGFloat(pitch * 10), width: self.marsContainingView.bounds.width, height: self.marsContainingView.bounds.height)
-                    
-                    self.earthContainingView.bounds = CGRect(x: CGFloat(roll * 10), y: CGFloat(pitch * 10), width: self.earthContainingView.bounds.width, height: self.earthContainingView.bounds.height)
+                    for view in [self.exploreContainingView, self.marsContainingView, self.earthContainingView] {
+                        guard let view = view else { continue }
+                        view.bounds = CGRect(x: CGFloat(roll * 10), y: CGFloat(pitch * 10), width: view.bounds.width, height: view.bounds.height)
+                    }
                 }
             })
             

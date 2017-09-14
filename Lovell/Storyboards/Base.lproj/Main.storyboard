@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h2U-T8-an4">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+        <array key="TimesNewRoman.ttf">
+            <string>TimesNewRomanPSMT</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Home Controller-->
+        <scene sceneID="1cj-Bn-nQR">
+            <objects>
+                <viewController id="h2U-T8-an4" customClass="HomeController" customModule="Lovell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ecw-Ea-wa0">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyJ-zf-v50" userLabel="Explore The Universe">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="633"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exploredefault" translatesAutoresizingMaskIntoConstraints="NO" id="ggn-6e-37t">
+                                        <rect key="frame" x="-20" y="-20" width="808" height="673"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore The Universe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpP-zw-UN7">
+                                        <rect key="frame" x="102" y="281" width="564" height="71"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="64"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mbk-0a-8cx">
+                                        <rect key="frame" x="342" y="22" width="84.5" height="25"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lovell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cWL-xx-e29">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Cwb-3q-Yfv"/>
+                                                    <constraint firstAttribute="width" constant="25" id="WFd-el-6y8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lovell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur4-zv-nBA">
+                                                <rect key="frame" x="33" y="0.0" width="51.5" height="25"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="633" id="6cB-wh-Uww"/>
+                                    <constraint firstItem="ggn-6e-37t" firstAttribute="leading" secondItem="iyJ-zf-v50" secondAttribute="leading" constant="-20" id="Kta-Ig-bsD"/>
+                                    <constraint firstItem="CpP-zw-UN7" firstAttribute="centerX" secondItem="iyJ-zf-v50" secondAttribute="centerX" id="Nta-7u-dhw"/>
+                                    <constraint firstItem="mbk-0a-8cx" firstAttribute="centerX" secondItem="iyJ-zf-v50" secondAttribute="centerX" id="XVw-3Z-4xP"/>
+                                    <constraint firstItem="CpP-zw-UN7" firstAttribute="centerY" secondItem="iyJ-zf-v50" secondAttribute="centerY" id="hqj-Ex-HMg"/>
+                                    <constraint firstItem="mbk-0a-8cx" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="top" constant="22" id="iBw-kk-e0d"/>
+                                    <constraint firstItem="ggn-6e-37t" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="top" constant="-20" id="liT-Q5-YmL"/>
+                                    <constraint firstAttribute="trailing" secondItem="ggn-6e-37t" secondAttribute="trailing" constant="-20" id="vyI-Ma-bUc"/>
+                                    <constraint firstAttribute="bottom" secondItem="ggn-6e-37t" secondAttribute="bottom" constant="-20" id="z7b-Lj-lCj"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PcA-hR-RvR">
+                                <rect key="frame" x="0.0" y="633" width="768" height="391"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QRl-tn-xcN" userLabel="Hello From Mars">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="391"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marsdefault" translatesAutoresizingMaskIntoConstraints="NO" id="6Ez-Tt-fiV">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="391"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgh-mu-1K8">
+                                                <rect key="frame" x="110" y="151" width="165" height="89"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="89" id="EI5-0c-8O9"/>
+                                                    <constraint firstAttribute="width" constant="165" id="TsE-qE-e8y"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Hello From Mars">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="36" name="TimesNewRomanPSMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="xgh-mu-1K8" firstAttribute="centerY" secondItem="QRl-tn-xcN" secondAttribute="centerY" id="19P-wN-i39"/>
+                                            <constraint firstItem="6Ez-Tt-fiV" firstAttribute="leading" secondItem="QRl-tn-xcN" secondAttribute="leading" id="J3c-y2-wvP"/>
+                                            <constraint firstItem="6Ez-Tt-fiV" firstAttribute="top" secondItem="QRl-tn-xcN" secondAttribute="top" id="Lsw-nW-TDz"/>
+                                            <constraint firstItem="xgh-mu-1K8" firstAttribute="centerX" secondItem="QRl-tn-xcN" secondAttribute="centerX" id="Nvq-1S-f6J"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Ez-Tt-fiV" secondAttribute="trailing" id="Suj-tH-xR6"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Ez-Tt-fiV" secondAttribute="bottom" id="mRQ-gQ-ttX"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5BQ-Au-S42" userLabel="Go Home">
+                                        <rect key="frame" x="384" y="0.0" width="384" height="391"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homedefault" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-1T-pLG">
+                                                <rect key="frame" x="0.0" y="0.0" width="384" height="391"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2e-Cx-RAV">
+                                                <rect key="frame" x="122" y="175" width="141" height="40"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="36"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="k2e-Cx-RAV" firstAttribute="centerX" secondItem="5BQ-Au-S42" secondAttribute="centerX" id="3dE-Rv-e3D"/>
+                                            <constraint firstAttribute="trailing" secondItem="1qi-1T-pLG" secondAttribute="trailing" id="8Mc-rs-QIK"/>
+                                            <constraint firstItem="1qi-1T-pLG" firstAttribute="leading" secondItem="5BQ-Au-S42" secondAttribute="leading" id="JRl-yK-BCZ"/>
+                                            <constraint firstItem="1qi-1T-pLG" firstAttribute="top" secondItem="5BQ-Au-S42" secondAttribute="top" id="QWA-ti-h20"/>
+                                            <constraint firstItem="k2e-Cx-RAV" firstAttribute="centerY" secondItem="5BQ-Au-S42" secondAttribute="centerY" id="oz4-B8-VFc"/>
+                                            <constraint firstAttribute="bottom" secondItem="1qi-1T-pLG" secondAttribute="bottom" id="yuz-C0-2D5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iyJ-zf-v50" firstAttribute="leading" secondItem="CGF-gk-scU" secondAttribute="leading" id="5OI-9v-Vph"/>
+                            <constraint firstItem="CGF-gk-scU" firstAttribute="trailing" secondItem="iyJ-zf-v50" secondAttribute="trailing" id="7Ao-QO-Pey"/>
+                            <constraint firstItem="PcA-hR-RvR" firstAttribute="leading" secondItem="CGF-gk-scU" secondAttribute="leading" id="7Lq-li-KTc"/>
+                            <constraint firstItem="CGF-gk-scU" firstAttribute="bottom" secondItem="PcA-hR-RvR" secondAttribute="bottom" id="9Dd-93-RX0"/>
+                            <constraint firstItem="PcA-hR-RvR" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="bottom" id="fhO-Yw-iai"/>
+                            <constraint firstItem="CGF-gk-scU" firstAttribute="trailing" secondItem="PcA-hR-RvR" secondAttribute="trailing" id="lya-ee-0RF"/>
+                            <constraint firstItem="iyJ-zf-v50" firstAttribute="top" secondItem="Ecw-Ea-wa0" secondAttribute="top" id="xg7-eH-zWb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CGF-gk-scU"/>
+                    </view>
+                    <connections>
+                        <outlet property="earthContainingView" destination="5BQ-Au-S42" id="uYp-KJ-0pH"/>
+                        <outlet property="earthImage" destination="1qi-1T-pLG" id="pdq-vh-M2j"/>
+                        <outlet property="exploreContainingView" destination="iyJ-zf-v50" id="voU-7y-jIb"/>
+                        <outlet property="exploreImage" destination="ggn-6e-37t" id="spf-Ks-TBC"/>
+                        <outlet property="exploreLabel" destination="CpP-zw-UN7" id="iY8-gW-5Vh"/>
+                        <outlet property="homeLabel" destination="k2e-Cx-RAV" id="m61-LY-S83"/>
+                        <outlet property="logoStackView" destination="mbk-0a-8cx" id="fio-3l-ow9"/>
+                        <outlet property="marsContainingView" destination="QRl-tn-xcN" id="yaN-Of-YGq"/>
+                        <outlet property="marsImage" destination="6Ez-Tt-fiV" id="GiD-MQ-T2K"/>
+                        <outlet property="marsLabel" destination="xgh-mu-1K8" id="U7m-Th-clz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MqE-FZ-63i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.71875" y="-68.5546875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="exploredefault" width="960" height="540"/>
+        <image name="homedefault" width="1500" height="1200"/>
+        <image name="lovell_icon" width="64" height="64"/>
+        <image name="marsdefault" width="4585" height="1795"/>
+    </resources>
+</document>

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */; };
-		ACCA969B1F69B4FB00DD3A8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA969A1F69B4FB00DD3A8F /* ViewController.swift */; };
+		ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */; };
 		ACCA969E1F69B4FB00DD3A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCA969C1F69B4FB00DD3A8F /* Main.storyboard */; };
 		ACCA96A01F69B4FB00DD3A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCA969F1F69B4FB00DD3A8F /* Assets.xcassets */; };
 		ACCA96A31F69B4FB00DD3A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCA96A11F69B4FB00DD3A8F /* LaunchScreen.storyboard */; };
 		ACCA96AE1F69B4FB00DD3A8F /* LovellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96AD1F69B4FB00DD3A8F /* LovellTests.swift */; };
+		ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,7 @@
 /* Begin PBXFileReference section */
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACCA969A1F69B4FB00DD3A8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		ACCA969D1F69B4FB00DD3A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACCA969F1F69B4FB00DD3A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACCA96A21F69B4FB00DD3A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +37,7 @@
 		ACCA96A91F69B4FB00DD3A8F /* LovellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LovellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96AD1F69B4FB00DD3A8F /* LovellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovellTests.swift; sourceTree = "<group>"; };
 		ACCA96AF1F69B4FB00DD3A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +79,13 @@
 		ACCA96971F69B4FB00DD3A8F /* Lovell */ = {
 			isa = PBXGroup;
 			children = (
+				ACCA96B81F6ADE3400DD3A8F /* Views */,
+				ACCA96B91F6ADE3B00DD3A8F /* Controllers */,
+				ACCA96BA1F6ADE6F00DD3A8F /* Services */,
+				ACCA96BB1F6ADE8600DD3A8F /* Helpers */,
+				ACCA96BC1F6ADE9F00DD3A8F /* Storyboards */,
 				ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */,
-				ACCA969A1F69B4FB00DD3A8F /* ViewController.swift */,
-				ACCA969C1F69B4FB00DD3A8F /* Main.storyboard */,
 				ACCA969F1F69B4FB00DD3A8F /* Assets.xcassets */,
-				ACCA96A11F69B4FB00DD3A8F /* LaunchScreen.storyboard */,
 				ACCA96A41F69B4FB00DD3A8F /* Info.plist */,
 			);
 			path = Lovell;
@@ -94,6 +98,45 @@
 				ACCA96AF1F69B4FB00DD3A8F /* Info.plist */,
 			);
 			path = LovellTests;
+			sourceTree = "<group>";
+		};
+		ACCA96B81F6ADE3400DD3A8F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACCA96B91F6ADE3B00DD3A8F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ACCA96BA1F6ADE6F00DD3A8F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ACCA96BB1F6ADE8600DD3A8F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ACCA96BC1F6ADE9F00DD3A8F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ACCA969C1F69B4FB00DD3A8F /* Main.storyboard */,
+				ACCA96A11F69B4FB00DD3A8F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACCA969B1F69B4FB00DD3A8F /* ViewController.swift in Sources */,
+				ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */,
 				ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */,
+				ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,11 +400,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				INFOPLIST_FILE = Lovell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -371,11 +416,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				INFOPLIST_FILE = Lovell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

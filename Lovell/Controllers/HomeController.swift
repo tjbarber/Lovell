@@ -9,7 +9,9 @@
 import UIKit
 
 class HomeController: UIViewController {
-
+    
+    let goldenRatio = 1.618
+    var exploreContainingViewHeightConstraint: NSLayoutConstraint?
     var motionTimer: Timer?
     
     @IBOutlet weak var logoStackView: UIStackView!
@@ -29,18 +31,26 @@ class HomeController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideUIElements()
+        self.hideUIElements()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        displayUIElements()
+        self.displayUIElements()
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        self.adjustExploreHeightAccordingToGoldenRatio()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.adjustExploreHeightAccordingToGoldenRatio()
+    }
 
 }
 
@@ -98,6 +108,19 @@ extension HomeController {
                 RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
             }
         }
+    }
+    
+    func adjustExploreHeightAccordingToGoldenRatio() {
+        let screenHeight = Double(UIScreen.main.bounds.size.height)
+        let exploreContainingViewGoldenRatioSize = CGFloat(screenHeight / goldenRatio)
+        
+        if let heightConstraint = self.exploreContainingViewHeightConstraint {
+            NSLayoutConstraint.deactivate([heightConstraint])
+        }
+        
+        let heightConstraint = NSLayoutConstraint.init(item: exploreContainingView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: exploreContainingViewGoldenRatioSize)
+        self.exploreContainingViewHeightConstraint = heightConstraint
+        NSLayoutConstraint.activate([heightConstraint])
     }
 }
 

@@ -66,6 +66,7 @@ class HomeController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         self.adjustExploreHeightAccordingToGoldenRatio()
     }
 
@@ -116,7 +117,7 @@ extension HomeController {
                     
                     for view in [self.exploreContainingView, self.marsContainingView, self.earthContainingView] {
                         guard let view = view else { continue }
-                        view.bounds = CGRect(x: CGFloat(roll * 10), y: CGFloat(pitch * 10), width: view.bounds.width, height: view.bounds.height)
+                        view.bounds = CGRect(x: CGFloat(roll * 15), y: CGFloat(pitch * 15), width: view.bounds.width, height: view.bounds.height)
                     }
                 }
             })

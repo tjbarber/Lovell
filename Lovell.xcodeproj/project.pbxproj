@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		AC00DE2C1F6B1F930051905F /* MarsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2B1F6B1F930051905F /* MarsController.swift */; };
 		AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2D1F6B1FA40051905F /* EarthController.swift */; };
-		AC00DE301F6B1FB50051905F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2F1F6B1FB50051905F /* ExploreController.swift */; };
 		AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE311F6B228D0051905F /* DetailViewController.swift */; };
+		AC00DE341F6C34270051905F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE331F6C34270051905F /* ExploreController.swift */; };
+		AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */; };
+		AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */; };
 		ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */; };
 		ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */; };
 		ACCA969E1F69B4FB00DD3A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCA969C1F69B4FB00DD3A8F /* Main.storyboard */; };
@@ -33,8 +35,10 @@
 /* Begin PBXFileReference section */
 		AC00DE2B1F6B1F930051905F /* MarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsController.swift; sourceTree = "<group>"; };
 		AC00DE2D1F6B1FA40051905F /* EarthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthController.swift; sourceTree = "<group>"; };
-		AC00DE2F1F6B1FB50051905F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		AC00DE311F6B228D0051905F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC00DE331F6C34270051905F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleAPI.swift; sourceTree = "<group>"; };
+		AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		ACCA96B81F6ADE3400DD3A8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,7 +127,7 @@
 				AC00DE311F6B228D0051905F /* DetailViewController.swift */,
 				AC00DE2B1F6B1F930051905F /* MarsController.swift */,
 				AC00DE2D1F6B1FA40051905F /* EarthController.swift */,
-				AC00DE2F1F6B1FB50051905F /* ExploreController.swift */,
+				AC00DE331F6C34270051905F /* ExploreController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */,
+				AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 				AC00DE2C1F6B1F930051905F /* MarsController.swift in Sources */,
 				AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */,
 				ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */,
-				AC00DE301F6B1FB50051905F /* ExploreController.swift in Sources */,
+				AC00DE341F6C34270051905F /* ExploreController.swift in Sources */,
+				AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */,
 				AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */,
+				AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

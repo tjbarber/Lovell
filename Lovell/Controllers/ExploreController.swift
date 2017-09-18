@@ -13,6 +13,9 @@ private let reuseIdentifier = "exploreCell"
 class ExploreController: UICollectionViewController {
     static let segueIdentifier = "exploreSegue"
     
+    var nextPage = 1
+    var imageDataSource  = [HubbleImage]()
+    
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
     @IBAction func close(_ sender: Any) {
@@ -22,6 +25,7 @@ class ExploreController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBarButtonFont()
+        loadDataFor(nextPage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,13 +72,34 @@ extension ExploreController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.imageDataSource.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ExploreCell
-        cell.configure()
+        cell.configure(withImage: self.imageDataSource[indexPath.row], indexPath: indexPath, collectionView: self.collectionView)
         return cell
+    }
+}
+
+// MARK: - Hubble API Methods
+extension ExploreController {
+    func loadDataFor(_ pageId: Int) {
+        HubbleAPI.sharedInstance.getImageData(page: pageId) { hubbleImageMetadata, error in
+            if let error = error {
+                // FIXME: - Alert Helper
+                fatalError(error.localizedDescription)
+            }
+            
+            if let hubbleImageMetadata = hubbleImageMetadata {
+                for metadata in hubbleImageMetadata {
+                    let hubbleImage = HubbleImage(withMetadata: metadata)
+                    self.imageDataSource.append(hubbleImage)
+                }
+                self.nextPage += 1
+                self.collectionView?.reloadData()
+            }
+        }
     }
 }
 

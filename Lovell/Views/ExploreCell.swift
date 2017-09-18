@@ -12,11 +12,51 @@ class ExploreCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    func configure() {
+    func configure(withImage image: HubbleImage, indexPath: IndexPath, collectionView: UICollectionView?) {
         // Clean up time
         self.imageView.image = nil
+        self.imageView.isHidden = true
+        self.activityIndicator.isHidden = false
         
         // Time to configure the cell
-        self.imageView.image = #imageLiteral(resourceName: "exploredefault")
+        
+        if let thumbnail = image.thumbnail {
+            self.imageView.image = thumbnail
+            self.imageView.isHidden = false
+        }
+        
+        switch (image.thumbnailImageState) {
+        case .downloaded:
+            self.activityIndicator.stopAnimating()
+        case .failed:
+            self.activityIndicator.stopAnimating()
+            // Do something to indicate failure
+        case .new:
+            self.activityIndicator.startAnimating()
+            self.download(image: image, indexPath: indexPath, collectionView: collectionView)
+        }
+    }
+    
+    func download(image: HubbleImage, indexPath: IndexPath, collectionView: UICollectionView?) {
+        if PendingHubbleImageOperations.sharedInstance.downloadsInProgress[indexPath] != nil {
+            return
+        }
+        
+        let downloader = HubbleImageDownloader(image: image)
+        
+        downloader.completionBlock = {
+            if downloader.isCancelled {
+                return
+            }
+            DispatchQueue.main.async {
+                PendingHubbleImageOperations.sharedInstance.downloadsInProgress.removeValue(forKey: indexPath)
+                if let collectionView = collectionView {
+                    collectionView.reloadItems(at: [indexPath])
+                }
+            }
+        }
+        
+        PendingHubbleImageOperations.sharedInstance.downloadsInProgress[indexPath] = downloader
+        PendingHubbleImageOperations.sharedInstance.downloadQueue.addOperation(downloader)
     }
 }

@@ -214,7 +214,7 @@
                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q6u-6e-g5j">
                                             <rect key="frame" x="40" y="40" width="20" height="20"/>
                                         </activityIndicatorView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exploredefault" translatesAutoresizingMaskIntoConstraints="NO" id="hWD-LY-YzZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exploredefault" translatesAutoresizingMaskIntoConstraints="NO" id="hWD-LY-YzZ">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
                                     </subviews>

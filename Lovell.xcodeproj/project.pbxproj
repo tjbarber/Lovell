@@ -11,6 +11,11 @@
 		AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE2D1F6B1FA40051905F /* EarthController.swift */; };
 		AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE311F6B228D0051905F /* DetailViewController.swift */; };
 		AC00DE341F6C34270051905F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00DE331F6C34270051905F /* ExploreController.swift */; };
+		AC1F9E951F6C7E24009BAC45 /* HubbleImageMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E941F6C7E24009BAC45 /* HubbleImageMetadata.swift */; };
+		AC1F9E971F6C9357009BAC45 /* HubbleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E961F6C9357009BAC45 /* HubbleImage.swift */; };
+		AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E981F7033D0009BAC45 /* HubbleImageOperations.swift */; };
+		AC1F9E9B1F704FCD009BAC45 /* HubbleImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E9A1F704FCD009BAC45 /* HubbleImageDetails.swift */; };
+		AC1F9E9D1F705171009BAC45 /* HubbleImageFileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */; };
 		AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */; };
 		AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */; };
 		ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */; };
@@ -32,11 +37,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ACBBB4BA1F6C7A6F009AF783 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AC00DE2B1F6B1F930051905F /* MarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsController.swift; sourceTree = "<group>"; };
 		AC00DE2D1F6B1FA40051905F /* EarthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthController.swift; sourceTree = "<group>"; };
 		AC00DE311F6B228D0051905F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AC00DE331F6C34270051905F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		AC1F9E941F6C7E24009BAC45 /* HubbleImageMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageMetadata.swift; sourceTree = "<group>"; };
+		AC1F9E961F6C9357009BAC45 /* HubbleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImage.swift; sourceTree = "<group>"; };
+		AC1F9E981F7033D0009BAC45 /* HubbleImageOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageOperations.swift; sourceTree = "<group>"; };
+		AC1F9E9A1F704FCD009BAC45 /* HubbleImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageDetails.swift; sourceTree = "<group>"; };
+		AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageFileDescriptor.swift; sourceTree = "<group>"; };
 		AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleAPI.swift; sourceTree = "<group>"; };
 		AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +93,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC1F9E931F6C7E0F009BAC45 /* HubbleAPI */ = {
+			isa = PBXGroup;
+			children = (
+				AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */,
+				AC1F9E961F6C9357009BAC45 /* HubbleImage.swift */,
+				AC1F9E941F6C7E24009BAC45 /* HubbleImageMetadata.swift */,
+				AC1F9E9A1F704FCD009BAC45 /* HubbleImageDetails.swift */,
+				AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */,
+				AC1F9E981F7033D0009BAC45 /* HubbleImageOperations.swift */,
+			);
+			path = HubbleAPI;
+			sourceTree = "<group>";
+		};
 		ACCA968C1F69B4FB00DD3A8F = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +171,8 @@
 		ACCA96BA1F6ADE6F00DD3A8F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AC1F9E931F6C7E0F009BAC45 /* HubbleAPI */,
 				ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */,
-				AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -167,6 +203,7 @@
 				ACCA96911F69B4FB00DD3A8F /* Sources */,
 				ACCA96921F69B4FB00DD3A8F /* Frameworks */,
 				ACCA96931F69B4FB00DD3A8F /* Resources */,
+				ACBBB4BA1F6C7A6F009AF783 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,11 +301,16 @@
 				ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */,
 				AC00DE2C1F6B1F930051905F /* MarsController.swift in Sources */,
 				AC00DE2E1F6B1FA40051905F /* EarthController.swift in Sources */,
+				AC1F9E9D1F705171009BAC45 /* HubbleImageFileDescriptor.swift in Sources */,
 				ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */,
 				AC00DE341F6C34270051905F /* ExploreController.swift in Sources */,
+				AC1F9E9B1F704FCD009BAC45 /* HubbleImageDetails.swift in Sources */,
 				AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */,
+				AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */,
 				AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */,
 				AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */,
+				AC1F9E951F6C7E24009BAC45 /* HubbleImageMetadata.swift in Sources */,
+				AC1F9E971F6C9357009BAC45 /* HubbleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +465,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Lovell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -439,6 +485,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Lovell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

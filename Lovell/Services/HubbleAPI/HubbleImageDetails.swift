@@ -9,9 +9,9 @@
 import Foundation
 
 struct HubbleImageDetails: Codable {
-    let name: String
+    let name: String?
     let description: String?
-    let credits: String
+    let credits: String?
     let imageFiles: [HubbleImageFileDescriptor]
     
     enum CodingKeys: String, CodingKey {

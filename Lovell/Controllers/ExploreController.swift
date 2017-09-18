@@ -15,6 +15,8 @@ class ExploreController: UICollectionViewController {
     
     var nextPage = 1
     var imageDataSource  = [HubbleImage]()
+    var allowLoadFromScroll = false
+    var loadingData = false
     
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
@@ -25,11 +27,11 @@ class ExploreController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBarButtonFont()
-        loadDataFor(nextPage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,10 +84,24 @@ extension ExploreController {
     }
 }
 
+// MARK: UICollectionView Infinite Scrolling
+extension ExploreController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if (offsetY > contentHeight - scrollView.frame.size.height) && self.allowLoadFromScroll && !self.loadingData {
+            print("loading data from scroll, loading page \(self.nextPage)")
+            loadData()
+        }
+    }
+}
+
 // MARK: - Hubble API Methods
 extension ExploreController {
-    func loadDataFor(_ pageId: Int) {
-        HubbleAPI.sharedInstance.getImageData(page: pageId) { hubbleImageMetadata, error in
+    func loadData() {
+        self.allowLoadFromScroll = true
+        self.loadingData = true
+        HubbleAPI.sharedInstance.getImageData(page: self.nextPage) { hubbleImageMetadata, error in
             if let error = error {
                 // FIXME: - Alert Helper
                 fatalError(error.localizedDescription)
@@ -98,6 +114,7 @@ extension ExploreController {
                 }
                 self.nextPage += 1
                 self.collectionView?.reloadData()
+                self.loadingData = false
             }
         }
     }

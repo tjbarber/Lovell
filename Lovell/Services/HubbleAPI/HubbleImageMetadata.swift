@@ -10,10 +10,10 @@ import Foundation
 
 struct HubbleImageMetadata: Decodable {
     let id: Int
-    let name: String
-    let newsName: String
-    let collection: String
-    let mission: String
+    let name: String?
+    let newsName: String?
+    let collection: String?
+    let mission: String?
     
     enum CodingKeys: String, CodingKey {
         case id

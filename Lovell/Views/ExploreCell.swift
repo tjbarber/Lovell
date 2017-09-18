@@ -33,11 +33,11 @@ class ExploreCell: UICollectionViewCell {
             // Do something to indicate failure
         case .new:
             self.activityIndicator.startAnimating()
-            self.download(image: image, indexPath: indexPath, collectionView: collectionView)
+            ExploreCell.download(image: image, indexPath: indexPath, collectionView: collectionView)
         }
     }
     
-    func download(image: HubbleImage, indexPath: IndexPath, collectionView: UICollectionView?) {
+    static func download(image: HubbleImage, indexPath: IndexPath, collectionView: UICollectionView?) {
         if PendingHubbleImageOperations.sharedInstance.downloadsInProgress[indexPath] != nil {
             return
         }

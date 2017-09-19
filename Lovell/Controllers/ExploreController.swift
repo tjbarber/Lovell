@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "exploreCell"
 
 class ExploreController: UICollectionViewController {
+    private let exploreDetailPresentAnimationController = ExploreDetailPresentAnimationController()
+    private let exploreDetailDismissAnimationController = ExploreDetailDismissAnimationController()
     static let segueIdentifier = "exploreSegue"
     
     var nextPage = 1
@@ -41,6 +43,29 @@ class ExploreController: UICollectionViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         self.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case ExploreDetailController.segueIdentifier:
+                segue.destination.transitioningDelegate = self
+            default: break
+            }
+        }
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension ExploreController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        exploreDetailPresentAnimationController.originFrame = CGRect.zero
+        return exploreDetailPresentAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        exploreDetailDismissAnimationController.originFrame = CGRect.zero
+        return exploreDetailDismissAnimationController
     }
 }
 

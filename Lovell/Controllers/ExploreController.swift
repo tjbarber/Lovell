@@ -19,6 +19,7 @@ class ExploreController: UICollectionViewController {
     var imageDataSource  = [HubbleImage]()
     var allowLoadFromScroll = false
     var loadingData = false
+    var selectedImage: HubbleImage?
     
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
@@ -52,8 +53,10 @@ class ExploreController: UICollectionViewController {
                 // Setting this to .overFullscreen allows us to display a modal and keep the parent
                 // view controller in memory, otherwise the new controller would display and the parent
                 // would disappear
-                segue.destination.modalPresentationStyle = .overFullScreen
-                segue.destination.transitioningDelegate = self
+                let destination = segue.destination as! ExploreDetailController
+                destination.modalPresentationStyle = .overFullScreen
+                destination.transitioningDelegate = self
+                destination.selectedImage = self.selectedImage
             default: break
             }
         }
@@ -68,6 +71,7 @@ extension ExploreController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.selectedImage = nil
         exploreDetailDismissAnimationController.originFrame = CGRect.zero
         return exploreDetailDismissAnimationController
     }
@@ -95,12 +99,20 @@ extension ExploreController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: UICollectionViewDelegate
+extension ExploreController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("im here")
+        self.selectedImage = self.imageDataSource[indexPath.row]
+        performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
+    }
+}
+
 // MARK: UICollectionViewDataSource
 extension ExploreController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageDataSource.count

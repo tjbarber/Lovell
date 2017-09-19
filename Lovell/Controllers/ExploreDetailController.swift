@@ -57,8 +57,23 @@ class ExploreDetailDismissAnimationController: NSObject, UIViewControllerAnimate
 class ExploreDetailController: UIViewController {
     static let segueIdentifier = "exploreDetailSegue"
 
+    var selectedImage: HubbleImage?
+    
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let height = self.selectedImage?.thumbnail?.size.height,
+            let width = self.selectedImage?.thumbnail?.size.width else { return }
+        self.imageViewWidthConstraint.constant = width
+        self.imageViewHeightConstraint.constant = height
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.imageView.image = self.selectedImage?.thumbnail
     }
 
     override func didReceiveMemoryWarning() {

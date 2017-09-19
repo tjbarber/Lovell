@@ -232,7 +232,6 @@
                                 <connections>
                                     <outlet property="activityIndicator" destination="q6u-6e-g5j" id="IRc-If-ehH"/>
                                     <outlet property="imageView" destination="hWD-LY-YzZ" id="Uvw-3X-91B"/>
-                                    <segue destination="kdp-nb-U4m" kind="presentation" identifier="exploreDetailSegue" id="lrl-KO-IOq"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -251,6 +250,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="closeButton" destination="Y3P-pP-eKi" id="tms-es-hDg"/>
+                        <segue destination="kdp-nb-U4m" kind="presentation" identifier="exploreDetailSegue" id="yAu-R9-lTT"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ou-Zj-dvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,26 +265,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhh-uy-dNF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-rr-8kN">
                                 <rect key="frame" x="264" y="448" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Szt-sM-ykU"/>
-                                    <constraint firstAttribute="width" constant="240" id="zey-3N-HOn"/>
+                                    <constraint firstAttribute="height" constant="128" id="QK9-v1-y50"/>
+                                    <constraint firstAttribute="width" constant="240" id="tsw-0n-65m"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79826626712328763" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Rhh-uy-dNF" firstAttribute="centerX" secondItem="kpD-aW-nhF" secondAttribute="centerX" id="Tem-PU-asy"/>
-                            <constraint firstItem="Rhh-uy-dNF" firstAttribute="centerY" secondItem="kpD-aW-nhF" secondAttribute="centerY" id="fv4-90-iya"/>
+                            <constraint firstItem="RbO-rr-8kN" firstAttribute="centerY" secondItem="kpD-aW-nhF" secondAttribute="centerY" id="TRs-Ob-u5Q"/>
+                            <constraint firstItem="RbO-rr-8kN" firstAttribute="centerX" secondItem="kpD-aW-nhF" secondAttribute="centerX" id="fSb-8i-uTa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nMY-zv-OEE"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="p7A-gD-1O3" appends="YES" id="9vt-Sk-gVE"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="RbO-rr-8kN" id="PW5-Ih-ufe"/>
+                        <outlet property="imageViewHeightConstraint" destination="QK9-v1-y50" id="pGu-Xt-2kI"/>
+                        <outlet property="imageViewWidthConstraint" destination="tsw-0n-65m" id="O5f-lp-smv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QP8-EJ-AYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="p7A-gD-1O3">

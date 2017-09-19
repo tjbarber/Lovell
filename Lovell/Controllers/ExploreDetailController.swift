@@ -40,15 +40,13 @@ class ExploreDetailDismissAnimationController: NSObject, UIViewControllerAnimate
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        guard let fromVC = transitionContext.viewController(forKey: .from),
-            let toVC = transitionContext.viewController(forKey: .to) else { return }
+        guard let fromVC = transitionContext.viewController(forKey: .from) else { return }
         
-        containerView.addSubview(toVC.view)
-        toVC.view.alpha = 0.0
+        containerView.addSubview(fromVC.view)
+        fromVC.view.alpha = 1.0
         
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, animations: {
-            toVC.view.alpha = 1.0
             fromVC.view.alpha = 0.0
         }) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -56,7 +54,7 @@ class ExploreDetailDismissAnimationController: NSObject, UIViewControllerAnimate
     }
 }
 
-class ExploreDetailController: DetailViewController {
+class ExploreDetailController: UIViewController {
     static let segueIdentifier = "exploreDetailSegue"
 
     override func viewDidLoad() {
@@ -65,5 +63,9 @@ class ExploreDetailController: DetailViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func closeModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

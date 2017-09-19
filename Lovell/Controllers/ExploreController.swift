@@ -49,6 +49,10 @@ class ExploreController: UICollectionViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case ExploreDetailController.segueIdentifier:
+                // Setting this to .overFullscreen allows us to display a modal and keep the parent
+                // view controller in memory, otherwise the new controller would display and the parent
+                // would disappear
+                segue.destination.modalPresentationStyle = .overFullScreen
                 segue.destination.transitioningDelegate = self
             default: break
             }

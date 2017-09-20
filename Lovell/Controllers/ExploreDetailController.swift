@@ -88,12 +88,26 @@ class ExploreDetailController: UIViewController {
         let screenHeight = UIScreen.main.bounds.size.height
         let screenWidth  = UIScreen.main.bounds.size.width
         
-        self.imageViewWidthConstraint.constant = imageWidth
-        self.imageViewHeightConstraint.constant = imageHeight
+        let maxImageWidth = 480.0
+        let newImageHeight = ((480 * imageHeight) / imageWidth)
         
-        if (imageHeight > screenHeight) || (imageWidth > screenWidth) {
-            self.imageViewWidthConstraint.constant = imageWidth / 2
-            self.imageViewHeightConstraint.constant = imageHeight / 2
-        }
+//        let aspectRatio = imageWidth / imageHeight
+//
+//        let newImageHeight = screenWidth / 2
+//        let newImageWidth = newImageHeight * aspectRatio
+        
+        self.imageViewWidthConstraint.constant = CGFloat(maxImageWidth)
+        self.imageViewHeightConstraint.constant = newImageHeight
+        
+//        if imageWidth > screenWidth {
+//            self.imageViewWidthConstraint.constant = newImageWidth
+//            self.imageViewHeightConstraint.constant = newImageHeight
+//        }
+//        if (imageHeight > screenHeight) || (imageWidth > screenWidth) {
+//
+//            self.imageViewWidthConstraint.constant = imageWidth / 2
+//            self.imageViewHeightConstraint.constant = imageHeight / 2
+//
+//        }
     }
 }

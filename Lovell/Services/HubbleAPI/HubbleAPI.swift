@@ -8,9 +8,9 @@
 
 import Foundation
 
-class HubbleAPI {
+class HubbleAPI: API {
     static let sharedInstance = HubbleAPI()
-    private init() {}
+    override private init() {}
     
     func getImageData(page: Int, completion: @escaping ([HubbleImageMetadata]?, Error?) -> Void) {
         self.request("http://hubblesite.org/api/v3/images/all", queryItems: ["page": String(page)]) { data, error in
@@ -34,40 +34,5 @@ class HubbleAPI {
                 }
             }
         }
-    }
-    
-    func request(_ urlStr: String, queryItems: [String: String], completion: @escaping (Data?, Error?) -> Void) {
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        guard var components = URLComponents(string: urlStr) else {
-            // FIXME: - Handle error here
-            fatalError("Cannot create URLComponents object")
-        }
-        
-        var queryItemsArray = [URLQueryItem]()
-        
-        for (key, value) in queryItems {
-            let queryItem = URLQueryItem(name: key, value: value)
-            queryItemsArray.append(queryItem)
-        }
-        
-        components.queryItems = queryItemsArray
-        guard let url = components.url else {
-            // FIXME: - Handle error here
-            fatalError("Cannot get URL from component object.")
-        }
-    
-        let dataTask = session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                   completion(nil, error)
-                }
-            }
-            
-            DispatchQueue.main.async {
-                completion(data, nil)
-            }
-        }
-        
-        dataTask.resume()
     }
 }

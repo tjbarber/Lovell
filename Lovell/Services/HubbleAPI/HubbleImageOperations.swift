@@ -45,19 +45,19 @@ class HubbleImageDownloader: Operation {
                 let imageDetails = try decoder.decode(HubbleImageDetails.self, from: imageDetailData)
                 
                 self.image.details = imageDetails
-                let pngImageDetails = self.image.details?.imageFiles.filter({
+                let sortedImageDetails = self.image.details?.imageFiles.filter({
                     let fileUrlExtension: String = NSString(string: $0.fileUrl).pathExtension
-                    return fileUrlExtension == "png"
+                    return ["jpg","png"].contains(fileUrlExtension)
                 })
                 
-                if let pngImageDetails = pngImageDetails {
-                    if pngImageDetails.isEmpty {
+                if let sortedImageDetails = sortedImageDetails {
+                    if sortedImageDetails.isEmpty {
                         self.image.thumbnailImageState = .failed
                         return
                     }
                     
-                    let sortedPngDetails = pngImageDetails.sorted { $0.fileSize < $1.fileSize }
-                    guard let smallestImage = sortedPngDetails.first else {
+                    let sortedDetailsByFilesize = sortedImageDetails.sorted { $0.fileSize < $1.fileSize }
+                    guard let smallestImage = sortedDetailsByFilesize.first else {
                         self.image.thumbnailImageState = .failed
                         return
                     }
@@ -70,7 +70,6 @@ class HubbleImageDownloader: Operation {
                     if self.isCancelled {
                         return
                     }
-                    
                     
                     let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
                     
@@ -85,7 +84,6 @@ class HubbleImageDownloader: Operation {
                 }
                 
             } catch (let e) {
-                
                 self.image.thumbnailImageState = .failed
                 //fatalError(e.localizedDescription)
             }

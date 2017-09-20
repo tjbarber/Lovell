@@ -44,7 +44,7 @@ class ExploreCell: UICollectionViewCell {
         
         let downloader = HubbleImageDownloader(image: image)
         
-        downloader.completionBlock = {
+        downloader.completionBlock = { [weak collectionView] in
             if downloader.isCancelled {
                 return
             }

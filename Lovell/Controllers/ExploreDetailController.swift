@@ -65,10 +65,7 @@ class ExploreDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let height = self.selectedImage?.thumbnail?.size.height,
-            let width = self.selectedImage?.thumbnail?.size.width else { return }
-        self.imageViewWidthConstraint.constant = width
-        self.imageViewHeightConstraint.constant = height
+        determineImageSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,5 +79,21 @@ class ExploreDetailController: UIViewController {
     
     @IBAction func closeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func determineImageSize() {
+        guard let imageHeight = self.selectedImage?.thumbnail?.size.height,
+            let imageWidth = self.selectedImage?.thumbnail?.size.width else { return }
+        
+        let screenHeight = UIScreen.main.bounds.size.height
+        let screenWidth  = UIScreen.main.bounds.size.width
+        
+        self.imageViewWidthConstraint.constant = imageWidth
+        self.imageViewHeightConstraint.constant = imageHeight
+        
+        if (imageHeight > screenHeight) || (imageWidth > screenWidth) {
+            self.imageViewWidthConstraint.constant = imageWidth / 2
+            self.imageViewHeightConstraint.constant = imageHeight / 2
+        }
     }
 }

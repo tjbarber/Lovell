@@ -306,13 +306,77 @@
                     <view key="view" contentMode="scaleToFill" id="mmE-tc-Ueb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s1S-oa-HLj">
+                                <rect key="frame" x="-10" y="-10" width="788" height="1044"/>
+                            </imageView>
+                            <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-yL-QtW">
+                                <rect key="frame" x="120" y="140" width="528" height="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textField>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBf-AR-uwP">
+                                <rect key="frame" x="120" y="179" width="528" height="1"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="O4n-FG-YBh"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ln6-lf-3gJ">
+                                <rect key="frame" x="334" y="950" width="101" height="30"/>
+                                <state key="normal" title="Send Message">
+                                    <color key="titleColor" red="1" green="0.53333333329999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PHT-zI-Vto">
+                                <rect key="frame" x="120" y="202" width="528" height="726"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="trailing" secondItem="HBf-AR-uwP" secondAttribute="trailing" constant="120" id="5Mx-wY-vKv"/>
+                            <constraint firstItem="PHT-zI-Vto" firstAttribute="top" secondItem="HBf-AR-uwP" secondAttribute="bottom" constant="22" id="6U0-7K-Dh5"/>
+                            <constraint firstItem="s1S-oa-HLj" firstAttribute="top" secondItem="mmE-tc-Ueb" secondAttribute="top" constant="-10" id="HOA-VF-sK1"/>
+                            <constraint firstItem="Ln6-lf-3gJ" firstAttribute="centerX" secondItem="mmE-tc-Ueb" secondAttribute="centerX" id="Jva-pP-vRr"/>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="bottom" secondItem="s1S-oa-HLj" secondAttribute="bottom" constant="-10" id="Kgp-Qc-ImN"/>
+                            <constraint firstItem="PHT-zI-Vto" firstAttribute="leading" secondItem="cf4-ad-5Hw" secondAttribute="leading" constant="120" id="Lfh-bi-DwQ"/>
+                            <constraint firstItem="s1S-oa-HLj" firstAttribute="leading" secondItem="cf4-ad-5Hw" secondAttribute="leading" constant="-10" id="Nuh-bp-1ld"/>
+                            <constraint firstItem="aFI-yL-QtW" firstAttribute="leading" secondItem="cf4-ad-5Hw" secondAttribute="leading" constant="120" id="PBx-XD-xsZ"/>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="trailing" secondItem="aFI-yL-QtW" secondAttribute="trailing" constant="120" id="UTK-xc-6ZW"/>
+                            <constraint firstItem="Ln6-lf-3gJ" firstAttribute="top" secondItem="PHT-zI-Vto" secondAttribute="bottom" constant="22" id="XPA-Gw-FOb"/>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="trailing" secondItem="PHT-zI-Vto" secondAttribute="trailing" constant="120" id="b4r-61-beq"/>
+                            <constraint firstItem="aFI-yL-QtW" firstAttribute="top" secondItem="cf4-ad-5Hw" secondAttribute="top" constant="120" id="f8N-HE-8n7"/>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="bottom" secondItem="Ln6-lf-3gJ" secondAttribute="bottom" constant="44" id="iW2-Y4-Bu1"/>
+                            <constraint firstItem="HBf-AR-uwP" firstAttribute="leading" secondItem="cf4-ad-5Hw" secondAttribute="leading" constant="120" id="lZ0-0h-VCL"/>
+                            <constraint firstItem="cf4-ad-5Hw" firstAttribute="trailing" secondItem="s1S-oa-HLj" secondAttribute="trailing" constant="-10" id="ogR-vh-W35"/>
+                            <constraint firstItem="HBf-AR-uwP" firstAttribute="top" secondItem="aFI-yL-QtW" secondAttribute="bottom" id="uIB-es-gQF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cf4-ad-5Hw"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LSZ-0b-sQS" appends="YES" id="7CA-VE-N2T"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="marsImageView" destination="s1S-oa-HLj" id="KHJ-NW-leX"/>
+                        <outlet property="messageTextView" destination="PHT-zI-Vto" id="bAm-UO-rqz"/>
+                        <outlet property="recipientName" destination="aFI-yL-QtW" id="sRS-Zc-Zb8"/>
+                        <outlet property="sendButton" destination="Ln6-lf-3gJ" id="mN3-FS-qZ1"/>
+                        <outlet property="seperatorView" destination="HBf-AR-uwP" id="Khd-Du-K5U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFa-hU-wLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LSZ-0b-sQS">
+                    <connections>
+                        <action selector="stopEditing:" destination="eKg-HB-7ns" id="F5G-Cu-bWE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="851" y="-69"/>
+            <point key="canvasLocation" x="850.78125" y="-69.140625"/>
         </scene>
         <!--Earth Controller-->
         <scene sceneID="GlC-hF-uGy">

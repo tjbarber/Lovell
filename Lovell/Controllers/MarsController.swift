@@ -12,16 +12,58 @@ class MarsController: DetailViewController {
     static let segueIdentifier = "marsSegue"
     // In this version of the app we're only going to display images from Curiosity's first day on Mars.
     // It took 8 pictures with its Front Hazard Avoidance Camera. We're going to randomly pick one of them.
-    let sol = 0
+    let sol = 1000
+    let placeholderColor = UIColor.init(white: 0.8, alpha: 1.0)
+    var marsImage: UIImage? {
+        didSet {
+            self.marsImageView.image = self.marsImage
+            animateImageView()
+        }
+    }
+    
+    @IBOutlet weak var marsImageView: UIImageView!
+    @IBOutlet weak var recipientName: UITextField!
+    @IBOutlet weak var seperatorView: UIView!
+    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var sendButton: UIButton!
+    
+    @IBAction func stopEditing(_ sender: UITapGestureRecognizer) {
+        self.recipientName.resignFirstResponder()
+        self.messageTextView.resignFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        recipientName.attributedPlaceholder = NSAttributedString(string: "To:", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        messageTextView.text = "Message:"
+        messageTextView.textColor = placeholderColor
+        messageTextView.delegate = self
+        
         loadImage()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// MARK: Text View Delegate
+extension MarsController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == self.placeholderColor {
+            textView.text = ""
+            textView.textColor = UIColor.white
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Message:"
+            textView.textColor = self.placeholderColor
+        }
     }
 }
 
@@ -41,10 +83,22 @@ extension MarsController {
                     }
                     
                     if let image = image {
-                        // Set the image
+                        self.marsImage = image
                     }
                 }
             }
         }
+    }
+    
+    func animateImageView() {
+        UIView.animate(withDuration: 1.0) {
+            self.marsImageView.alpha = 0.2
+        }
+        
+        UIView.animate(withDuration: 0.6, delay: 1.0, options: .curveEaseIn, animations: {
+            for view in [self.recipientName, self.seperatorView, self.messageTextView, self.sendButton] {
+                view?.alpha = 1.0
+            }
+        }, completion: nil)
     }
 }

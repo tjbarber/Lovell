@@ -47,6 +47,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>mars.jpl.nasa.gov</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>hubblesite.org</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>

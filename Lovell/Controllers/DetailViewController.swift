@@ -19,7 +19,6 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black
         
         let tapCloseGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonTapped))
         closeButtonImageView.addGestureRecognizer(tapCloseGestureRecognizer)

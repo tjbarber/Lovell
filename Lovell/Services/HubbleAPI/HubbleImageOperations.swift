@@ -78,7 +78,6 @@ class HubbleImageDownloader: Operation {
                     
                     let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
                     
-                    
                     guard let thumbnail = UIImage(data: thumbnailImageData) else {
                         image.thumbnailImageState = .failed
                         return

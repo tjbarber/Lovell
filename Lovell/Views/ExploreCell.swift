@@ -45,9 +45,6 @@ class ExploreCell: UICollectionViewCell {
         let downloader = HubbleImageDownloader(image: image)
         
         downloader.completionBlock = { [weak collectionView] in
-            if downloader.isCancelled {
-                return
-            }
             DispatchQueue.main.async {
                 PendingHubbleImageOperations.sharedInstance.downloadsInProgress.removeValue(forKey: indexPath)
                 if let collectionView = collectionView {

@@ -17,15 +17,18 @@ class MarsController: DetailViewController {
     var marsImage: UIImage? {
         didSet {
             self.marsImageView.image = self.marsImage
+            self.activityIndicator.stopAnimating()
             animateImageView()
         }
     }
     
     @IBOutlet weak var marsImageView: UIImageView!
+    @IBOutlet weak var recipientStackView: UIStackView!
     @IBOutlet weak var recipientName: UITextField!
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func stopEditing(_ sender: UITapGestureRecognizer) {
         self.recipientName.resignFirstResponder()
@@ -33,9 +36,22 @@ class MarsController: DetailViewController {
     }
     
     @IBAction func sendMessage(_ sender: Any) {
+        if let recipientName = self.recipientName.text {
+            if recipientName.isEmpty {
+                AlertHelper.showAlert(withTitle: "Oops!", withMessage: "You must provide a recipient name.", presentingViewController: self)
+                return
+            }
+        }
+        
+        if let message = self.messageTextView.text {
+            if message.isEmpty {
+                AlertHelper.showAlert(withTitle: "Oops!", withMessage: "You must have a message to send.", presentingViewController: self)
+            }
+        }
+        
         let screenshot = takeScreenshot()
         guard let unwrappedScreenshot = screenshot else {
-            // error handling
+            AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "We are unable to send a message right now. Please try again later.", presentingViewController: self)
             return
         }
         
@@ -50,7 +66,6 @@ class MarsController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recipientName.attributedPlaceholder = NSAttributedString(string: "To:", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
         messageTextView.text = "Message:"
         messageTextView.textColor = placeholderColor
         messageTextView.delegate = self
@@ -93,7 +108,9 @@ extension MarsController {
             if let firstImage = images.first {
                 MarsRoverAPI.sharedInstance.downloadImage(firstImage) { image, error in
                     if let error = error {
-                        // FIXME: Error handling code here
+                        AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "Something happened while trying to communicate with NASA. Please try again later.", presentingViewController: self) { [unowned self] action in
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     }
                     
                     if let image = image {
@@ -110,7 +127,7 @@ extension MarsController {
         }
         
         UIView.animate(withDuration: 0.6, delay: 1.0, options: .curveEaseIn, animations: {
-            for view in [self.recipientName, self.seperatorView, self.messageTextView, self.sendButton] {
+            for view in [self.recipientStackView, self.seperatorView, self.messageTextView, self.sendButton] {
                 view?.alpha = 1.0
             }
         }, completion: nil)

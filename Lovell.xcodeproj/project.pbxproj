@@ -16,6 +16,7 @@
 		AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E981F7033D0009BAC45 /* HubbleImageOperations.swift */; };
 		AC1F9E9B1F704FCD009BAC45 /* HubbleImageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E9A1F704FCD009BAC45 /* HubbleImageDetails.swift */; };
 		AC1F9E9D1F705171009BAC45 /* HubbleImageFileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */; };
+		AC2861891F742FAA00EB2EE2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */; };
 		AC3793171F72AFA800195686 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3793161F72AFA800195686 /* API.swift */; };
 		AC3793191F72B00D00195686 /* MarsRoverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3793181F72B00D00195686 /* MarsRoverAPI.swift */; };
 		AC37931B1F72B1BF00195686 /* MarsRoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37931A1F72B1BF00195686 /* MarsRoverImage.swift */; };
@@ -64,6 +65,7 @@
 		AC1F9E981F7033D0009BAC45 /* HubbleImageOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageOperations.swift; sourceTree = "<group>"; };
 		AC1F9E9A1F704FCD009BAC45 /* HubbleImageDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageDetails.swift; sourceTree = "<group>"; };
 		AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageFileDescriptor.swift; sourceTree = "<group>"; };
+		AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		AC3793161F72AFA800195686 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AC3793181F72B00D00195686 /* MarsRoverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverAPI.swift; sourceTree = "<group>"; };
 		AC37931A1F72B1BF00195686 /* MarsRoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverImage.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		ACCA96BB1F6ADE8600DD3A8F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */,
 				AC37931B1F72B1BF00195686 /* MarsRoverImage.swift in Sources */,
 				AC00DE341F6C34270051905F /* ExploreController.swift in Sources */,
+				AC2861891F742FAA00EB2EE2 /* AlertHelper.swift in Sources */,
 				AC1F9E9B1F704FCD009BAC45 /* HubbleImageDetails.swift in Sources */,
 				AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */,
 				AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */,

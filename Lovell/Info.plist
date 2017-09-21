@@ -63,5 +63,7 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Lovell needs permission to access your photo library to be able to save images.</string>
 </dict>
 </plist>

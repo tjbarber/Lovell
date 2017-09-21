@@ -328,6 +328,9 @@
                                 <state key="normal" title="Send Message">
                                     <color key="titleColor" red="1" green="0.53333333329999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendMessage:" destination="eKg-HB-7ns" eventType="touchUpInside" id="W9e-SW-AeT"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PHT-zI-Vto">
                                 <rect key="frame" x="120" y="202" width="528" height="726"/>

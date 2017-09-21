@@ -20,7 +20,7 @@ class PendingHubbleImageOperations {
 }
 
 class HubbleImageDownloader: Operation {
-    let image: HubbleImage
+    weak var image: HubbleImage?
     let imageRootUrl = "http://hubblesite.org/api/v3/image"
     
     init(image: HubbleImage) {
@@ -32,9 +32,14 @@ class HubbleImageDownloader: Operation {
             return
         }
         
+        guard let image = self.image else {
+            return
+        }
+        
         // Download detail metadata
         if let imageDetailMetadataURL = URL(string: "\(imageRootUrl)/\(image.metadata.id)") {
             let decoder = JSONDecoder()
+            
             do {
                 if self.isCancelled {
                     return
@@ -44,26 +49,26 @@ class HubbleImageDownloader: Operation {
                 
                 let imageDetails = try decoder.decode(HubbleImageDetails.self, from: imageDetailData)
                 
-                self.image.details = imageDetails
-                let sortedImageDetails = self.image.details?.imageFiles.filter({
+                image.details = imageDetails
+                let sortedImageDetails = image.details?.imageFiles.filter({
                     let fileUrlExtension: String = NSString(string: $0.fileUrl).pathExtension
                     return ["jpg","png"].contains(fileUrlExtension)
                 })
                 
                 if let sortedImageDetails = sortedImageDetails {
                     if sortedImageDetails.isEmpty {
-                        self.image.thumbnailImageState = .failed
+                        image.thumbnailImageState = .failed
                         return
                     }
                     
                     let sortedDetailsByFilesize = sortedImageDetails.sorted { $0.fileSize < $1.fileSize }
                     guard let smallestImage = sortedDetailsByFilesize.first else {
-                        self.image.thumbnailImageState = .failed
+                        image.thumbnailImageState = .failed
                         return
                     }
                     
                     guard let thumbnailImageDataURL = URL(string: smallestImage.fileUrl) else {
-                        self.image.thumbnailImageState = .failed
+                        image.thumbnailImageState = .failed
                         return
                     }
                     
@@ -75,17 +80,18 @@ class HubbleImageDownloader: Operation {
                     
                     
                     guard let thumbnail = UIImage(data: thumbnailImageData) else {
-                        self.image.thumbnailImageState = .failed
+                        image.thumbnailImageState = .failed
                         return
                     }
                     
-                    self.image.thumbnail = thumbnail
-                    self.image.thumbnailImageState = .downloaded
+                    image.thumbnail = thumbnail
+                    image.thumbnailImageState = .downloaded
                 }
                 
             } catch (let e) {
-                self.image.thumbnailImageState = .failed
-                //fatalError(e.localizedDescription)
+                image.thumbnailImageState = .failed
+                // Just print this out for our benefit, there's no need to alert the user
+                print(e.localizedDescription)
             }
         }
     }

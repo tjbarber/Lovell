@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum MarsRoverAPIError: Error {
+    case cannotCreateImage
+}
+
 enum MarsRover: String {
     case curiosity
     case opportunity
@@ -73,7 +77,7 @@ class MarsRoverAPI: API {
                         completion(image, nil)
                     }
                 } else {
-                    // FIXME: More error handling code
+                    completion(nil, MarsRoverAPIError.cannotCreateImage)
                 }
             }
         }

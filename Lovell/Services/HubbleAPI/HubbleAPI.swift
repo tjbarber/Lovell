@@ -22,15 +22,13 @@ class HubbleAPI: API {
             
             if let data = data {
                 let decoder = JSONDecoder()
-                // FIXME: - More error handling
                 do {
                     let hubbleImageData = try decoder.decode([HubbleImageMetadata].self, from: data)
                     DispatchQueue.main.async {
                         completion(hubbleImageData, nil)
                     }
                 } catch (let e) {
-                    // FIXME: - So much error handling
-                    fatalError(e.localizedDescription)
+                    completion(nil ,e)
                 }
             }
         }

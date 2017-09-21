@@ -108,6 +108,7 @@ extension MarsController {
             if let firstImage = images.first {
                 MarsRoverAPI.sharedInstance.downloadImage(firstImage) { image, error in
                     if let error = error {
+                        print(error.localizedDescription)
                         AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "Something happened while trying to communicate with NASA. Please try again later.", presentingViewController: self) { [unowned self] action in
                             self.dismiss(animated: true, completion: nil)
                         }

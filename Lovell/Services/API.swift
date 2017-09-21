@@ -8,13 +8,17 @@
 
 import Foundation
 
+enum APIError: Error {
+    case cannotCreateUrl
+}
+
 class API {
     let session = URLSession(configuration: URLSessionConfiguration.default)
     
     private func generateURL(_ urlStr: String, queryItems: [String: String]?) -> URL? {
         guard var components = URLComponents(string: urlStr) else {
-            // FIXME: - Handle error here
-            fatalError("Cannot create URLComponents object")
+            // Cannot create URLComponents object
+            return nil
         }
         
         var queryItemsArray = [URLQueryItem]()
@@ -28,8 +32,8 @@ class API {
         
         components.queryItems = queryItemsArray
         guard let url = components.url else {
-            // FIXME: - Handle error here
-            fatalError("Cannot get URL from component object.")
+            // Cannot get URL from component object.
+            return nil
         }
         
         return url
@@ -52,7 +56,10 @@ class API {
     }
     
     func downloadFile(_ urlStr: String, queryItems: [String: String]?, completion: @escaping (Data?, Error?) -> Void) {
-        guard let url = generateURL(urlStr, queryItems: queryItems) else { fatalError() }
+        guard let url = generateURL(urlStr, queryItems: queryItems) else {
+            completion(nil, APIError.cannotCreateUrl)
+            return
+        }
         let downloadTask = session.downloadTask(with: url) { location, response, error in
             if let error = error {
                 DispatchQueue.main.async {

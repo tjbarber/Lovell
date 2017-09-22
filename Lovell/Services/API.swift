@@ -40,7 +40,10 @@ class API {
     }
 
     func request(_ urlStr: String, queryItems: [String: String]?, completion: @escaping (Data?, Error?) -> Void) {
-        guard let url = generateURL(urlStr, queryItems: queryItems) else { fatalError() }
+        guard let url = generateURL(urlStr, queryItems: queryItems) else {
+            completion(nil, APIError.cannotCreateUrl)
+            return
+        }
         let dataTask = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {

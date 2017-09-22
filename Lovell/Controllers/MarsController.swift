@@ -101,10 +101,19 @@ extension MarsController {
     func loadImage() {
         MarsRoverAPI.sharedInstance.getImageMetadataFrom(.curiosity, camera: .fhaz, sol: sol) { images, error in
             if let error = error {
-                fatalError(error.localizedDescription)
+                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self) { action in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                return
             }
             
-            guard let images = images else { fatalError() }
+            guard let images = images else {
+                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "There was an error. Please try again later.", presentingViewController: self) { action in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                return
+            }
+            
             if let firstImage = images.first {
                 MarsRoverAPI.sharedInstance.downloadImage(firstImage) { image, error in
                     if let error = error {

@@ -144,7 +144,9 @@ extension ExploreController {
         self.loadingData = true
         HubbleAPI.sharedInstance.getImageData(page: self.nextPage) { [unowned self] hubbleImageMetadata, error in
             if let error = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong..", withMessage: error.localizedDescription, presentingViewController: self)
+                AlertHelper.showAlert(withTitle: "Something went wrong..", withMessage: error.localizedDescription, presentingViewController: self) { action in
+                    self.dismiss(animated: true, completion: nil)
+                }
                 return
             }
             

@@ -38,7 +38,7 @@ class EarthDetailController: UIViewController {
             self.getImageFor(latestAsset, coordinates: location) { imageMetadata in
                 self.downloadImage(imageMetadata) { image, error in
                     if let error = error {
-                        AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self)
+                        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                         return
                     }
                     
@@ -58,12 +58,12 @@ extension EarthDetailController {
     func getAssetListFor(_ coordinates: CLLocationCoordinate2D, completion: @escaping ([EarthAsset]) -> Void) {
         EarthImageryAPI.sharedInstance.getAssetList(lat: coordinates.latitude, long: coordinates.longitude) { assets, error in
             if let error = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                 return
             }
             
             guard let assets = assets else {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "The server is current experiencing an issue. Please try again later.", presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self)
                 return
             }
             
@@ -76,12 +76,12 @@ extension EarthDetailController {
             
             if let error = error {
                 
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                 return
             }
             
             guard let earthImage = earthImage else {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "The server is current experiencing an issue. Please try again later.", presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self)
                 return
             }
             
@@ -92,7 +92,7 @@ extension EarthDetailController {
     func downloadImage(_ metadata: EarthImage, completion: @escaping (UIImage?, Error?) -> Void) {
         EarthImageryAPI.sharedInstance.downloadFile(metadata.url, queryItems: nil) { data, error in
             if let _ = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "There was an issue with the server. Please try again later.", presentingViewController: self) { action in
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 return

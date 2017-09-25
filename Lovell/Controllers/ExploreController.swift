@@ -102,7 +102,6 @@ extension ExploreController: UICollectionViewDelegateFlowLayout {
 // MARK: UICollectionViewDelegate
 extension ExploreController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("im here")
         self.selectedImage = self.imageDataSource[indexPath.row]
         performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
     }
@@ -144,7 +143,7 @@ extension ExploreController {
         self.loadingData = true
         HubbleAPI.sharedInstance.getImageData(page: self.nextPage) { [unowned self] hubbleImageMetadata, error in
             if let error = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong..", withMessage: error.localizedDescription, presentingViewController: self) { action in
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 return

@@ -38,20 +38,20 @@ class MarsController: DetailViewController {
     @IBAction func sendMessage(_ sender: Any) {
         if let recipientName = self.recipientName.text {
             if recipientName.isEmpty {
-                AlertHelper.showAlert(withTitle: "Oops!", withMessage: "You must provide a recipient name.", presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.oops.rawValue, withMessage: ErrorMessages.mustProvideRecipientName.rawValue, presentingViewController: self)
                 return
             }
         }
         
         if let message = self.messageTextView.text {
             if message.isEmpty {
-                AlertHelper.showAlert(withTitle: "Oops!", withMessage: "You must have a message to send.", presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.oops.rawValue, withMessage: ErrorMessages.mustHaveMessage.rawValue, presentingViewController: self)
             }
         }
         
         let screenshot = takeScreenshot()
         guard let unwrappedScreenshot = screenshot else {
-            AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "We are unable to send a message right now. Please try again later.", presentingViewController: self)
+            AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.unableToSendMessage.rawValue, presentingViewController: self)
             return
         }
         
@@ -77,6 +77,10 @@ class MarsController: DetailViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 // MARK: Text View Delegate
@@ -101,14 +105,14 @@ extension MarsController {
     func loadImage() {
         MarsRoverAPI.sharedInstance.getImageMetadataFrom(.curiosity, camera: .fhaz, sol: sol) { images, error in
             if let error = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self) { action in
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 return
             }
             
             guard let images = images else {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "There was an error. Please try again later.", presentingViewController: self) { action in
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.pleaseTryAgainLater.rawValue, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)
                 }
                 return
@@ -118,7 +122,7 @@ extension MarsController {
                 MarsRoverAPI.sharedInstance.downloadImage(firstImage) { image, error in
                     if let error = error {
                         print(error.localizedDescription)
-                        AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "Something happened while trying to communicate with NASA. Please try again later.", presentingViewController: self) { [unowned self] action in
+                        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { [unowned self] action in
                             self.dismiss(animated: true, completion: nil)
                         }
                     }

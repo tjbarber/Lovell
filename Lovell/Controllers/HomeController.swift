@@ -69,7 +69,10 @@ class HomeController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         self.adjustExploreHeightAccordingToGoldenRatio()
     }
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 // MARK: - UI Helper Methods

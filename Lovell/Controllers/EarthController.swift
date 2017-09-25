@@ -27,19 +27,19 @@ class EarthController: DetailViewController {
         self.dismissKeyboard(self)
         
         guard let address = self.locationTextField.text else {
-            AlertHelper.showAlert(withTitle: "Oops...", withMessage: "We need you to give us an address.", presentingViewController: self)
+            AlertHelper.showAlert(withTitle: ErrorMessages.oops.rawValue, withMessage: ErrorMessages.addressNeeded.rawValue, presentingViewController: self)
             return
         }
         
         self.getCoordinatesFrom(address) { [unowned self] coordinates, error in
             if let error = error {
                 self.locationTextField.text = ""
-                AlertHelper.showAlert(withTitle: "Oops...", withMessage: error.localizedDescription, presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
             }
             
             guard let coordinates = coordinates else {
                 self.locationTextField.text = ""
-                AlertHelper.showAlert(withTitle: "Oops...", withMessage: "We had a hard time finding this location. Please try another.", presentingViewController: self)
+                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.locationNotFound.rawValue, presentingViewController: self)
                 return
             }
             
@@ -71,6 +71,9 @@ class EarthController: DetailViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 // MARK: Helper Methods
@@ -108,7 +111,7 @@ extension EarthController {
     
     func locationNotFoundAlert() {
         self.locationTextField.text = ""
-        AlertHelper.showAlert(withTitle: "Oops...", withMessage: "We couldn't find this location. Please try another!", presentingViewController: self)
+        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.locationNotFound.rawValue, presentingViewController: self)
     }
 }
 

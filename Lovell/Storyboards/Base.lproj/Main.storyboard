@@ -38,33 +38,13 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mbk-0a-8cx">
-                                        <rect key="frame" x="342" y="22" width="84.5" height="25"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lovell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cWL-xx-e29">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="Cwb-3q-Yfv"/>
-                                                    <constraint firstAttribute="width" constant="25" id="WFd-el-6y8"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lovell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur4-zv-nBA">
-                                                <rect key="frame" x="33" y="0.0" width="51.5" height="25"/>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="633" placeholder="YES" id="6cB-wh-Uww"/>
                                     <constraint firstItem="ggn-6e-37t" firstAttribute="leading" secondItem="iyJ-zf-v50" secondAttribute="leading" constant="-20" id="Kta-Ig-bsD"/>
                                     <constraint firstItem="CpP-zw-UN7" firstAttribute="centerX" secondItem="iyJ-zf-v50" secondAttribute="centerX" id="Nta-7u-dhw"/>
-                                    <constraint firstItem="mbk-0a-8cx" firstAttribute="centerX" secondItem="iyJ-zf-v50" secondAttribute="centerX" id="XVw-3Z-4xP"/>
                                     <constraint firstItem="CpP-zw-UN7" firstAttribute="centerY" secondItem="iyJ-zf-v50" secondAttribute="centerY" id="hqj-Ex-HMg"/>
-                                    <constraint firstItem="mbk-0a-8cx" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="top" constant="22" id="iBw-kk-e0d"/>
                                     <constraint firstItem="ggn-6e-37t" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="top" constant="-20" id="liT-Q5-YmL"/>
                                     <constraint firstAttribute="trailing" secondItem="ggn-6e-37t" secondAttribute="trailing" constant="-20" id="vyI-Ma-bUc"/>
                                     <constraint firstAttribute="bottom" secondItem="ggn-6e-37t" secondAttribute="bottom" constant="-20" id="z7b-Lj-lCj"/>
@@ -141,6 +121,24 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mbk-0a-8cx">
+                                <rect key="frame" x="341" y="28" width="84.5" height="25"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lovell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cWL-xx-e29">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Cwb-3q-Yfv"/>
+                                            <constraint firstAttribute="width" constant="25" id="WFd-el-6y8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lovell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur4-zv-nBA">
+                                        <rect key="frame" x="33" y="0.0" width="51.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -148,8 +146,10 @@
                             <constraint firstItem="CGF-gk-scU" firstAttribute="trailing" secondItem="iyJ-zf-v50" secondAttribute="trailing" id="7Ao-QO-Pey"/>
                             <constraint firstItem="PcA-hR-RvR" firstAttribute="leading" secondItem="CGF-gk-scU" secondAttribute="leading" id="7Lq-li-KTc"/>
                             <constraint firstItem="CGF-gk-scU" firstAttribute="bottom" secondItem="PcA-hR-RvR" secondAttribute="bottom" id="9Dd-93-RX0"/>
+                            <constraint firstItem="mbk-0a-8cx" firstAttribute="top" secondItem="CGF-gk-scU" secondAttribute="top" constant="8" id="NlT-ub-eHr"/>
                             <constraint firstItem="PcA-hR-RvR" firstAttribute="top" secondItem="iyJ-zf-v50" secondAttribute="bottom" id="fhO-Yw-iai"/>
                             <constraint firstItem="CGF-gk-scU" firstAttribute="trailing" secondItem="PcA-hR-RvR" secondAttribute="trailing" id="lya-ee-0RF"/>
+                            <constraint firstItem="mbk-0a-8cx" firstAttribute="centerX" secondItem="Ecw-Ea-wa0" secondAttribute="centerX" id="wfu-Cb-svH"/>
                             <constraint firstItem="iyJ-zf-v50" firstAttribute="top" secondItem="Ecw-Ea-wa0" secondAttribute="top" id="xg7-eH-zWb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CGF-gk-scU"/>

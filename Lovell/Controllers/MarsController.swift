@@ -10,8 +10,9 @@ import UIKit
 
 class MarsController: DetailViewController {
     static let segueIdentifier = "marsSegue"
-    // In this version of the app we're only going to display images from Curiosity's first day on Mars.
-    // It took 8 pictures with its Front Hazard Avoidance Camera. We're going to randomly pick one of them.
+    // In this version of the app we're only going to display a single selected image from Curiosity.
+    // The first one from it's 1000th day is awesome so we're going with that.
+    // In the final version we're going to have a currated collection that the server is going to randomly pick from.
     let sol = 1000
     let placeholderColor = UIColor.init(white: 0.8, alpha: 1.0)
     var marsImage: UIImage? {
@@ -58,6 +59,7 @@ class MarsController: DetailViewController {
         let activityController = UIActivityViewController(activityItems: [unwrappedScreenshot], applicationActivities: nil)
         if let popoverPresentationController = activityController.popoverPresentationController {
             popoverPresentationController.sourceView = self.sendButton
+            // This is used so that the popover controller's arrow is at the center of the button.
             popoverPresentationController.sourceRect = CGRect(x: (self.sendButton.bounds.width / 2.0), y: 0.0, width: 0.0, height: 0.0)
         }
         self.present(activityController, animated: false, completion: nil)
@@ -161,6 +163,9 @@ extension MarsController {
         self.view.drawHierarchy(in: screenshotBounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        // Redisplay elements after screenshot is taken.
+        // This happens so fast you don't see them flicker.
         self.closeButtonImageView.isHidden = false
         self.sendButton.isHidden = false
         

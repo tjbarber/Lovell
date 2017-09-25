@@ -89,7 +89,7 @@ class HubbleImageDownloader: Operation {
                 
             } catch (let e) {
                 image.thumbnailImageState = .failed
-                // Just print this out for our benefit, there's no need to alert the user
+                // Just print this out for our benefit, there's no need to alert the user at this point.
                 print(e.localizedDescription)
             }
         }

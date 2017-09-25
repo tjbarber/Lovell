@@ -30,7 +30,6 @@ class ExploreCell: UICollectionViewCell {
             self.activityIndicator.stopAnimating()
         case .failed:
             self.activityIndicator.stopAnimating()
-            // Do something to indicate failure
         case .new:
             self.activityIndicator.startAnimating()
             ExploreCell.download(image: image, indexPath: indexPath, collectionView: collectionView)

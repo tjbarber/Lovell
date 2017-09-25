@@ -82,6 +82,7 @@ extension ExploreController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screen = UIScreen.main
         let cellWidth = (screen.bounds.size.width / 2)
+        // No matter what, the cell's width and height are at a 16:9 aspect ratio
         let cellHeight = (cellWidth / 16) * 9
         return CGSize(width: cellWidth, height: cellHeight)
     }
@@ -127,6 +128,7 @@ extension ExploreController {
 // MARK: UICollectionView Infinite Scrolling
 extension ExploreController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // This function is how we make infinite scrolling work on the collection view.
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.size.height) && self.allowLoadFromScroll && !self.loadingData {

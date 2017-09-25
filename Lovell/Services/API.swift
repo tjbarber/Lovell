@@ -6,6 +6,9 @@
 //  Copyright © 2017 Novel. All rights reserved.
 //
 
+// This is the base for all the API services used in this project.
+// This object handles basic HTTP requests, URL object construction, and file downloads.
+
 import Foundation
 
 enum APIError: Error {
@@ -30,6 +33,9 @@ class API {
             }
         }
         
+        // If you have an empty query items array, don't mess with the queryItems property.
+        // This will effect URL strings that already have query items attached but we've passed an empty
+        // query items array.
         if !queryItemsArray.isEmpty {
             components.queryItems = queryItemsArray
         }

@@ -107,6 +107,7 @@ extension HomeController {
     }
     
     func updateBackgroundsFromMotion() {
+        // This is the code used to make the paralax effect work on the background images.
         let motion = MotionService.sharedInstance
         if motion.isDeviceMotionAvailable {
             motion.deviceMotionUpdateInterval = 1.0 / 60

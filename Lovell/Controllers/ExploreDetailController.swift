@@ -10,7 +10,8 @@ import UIKit
 
 class ExploreDetailController: UIViewController {
     static let segueIdentifier = "exploreDetailSegue"
-
+    
+    let imageWidthDivisor: CGFloat = 1.6
     var selectedImage: HubbleImage?
     
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
@@ -41,8 +42,11 @@ class ExploreDetailController: UIViewController {
         
         let screenWidth  = UIScreen.main.bounds.size.width
         
-        let maxImageWidth = screenWidth / 1.6
-        let newImageHeight = ((480 * imageHeight) / imageWidth)
+        // This is where we calculate the max width of the image view
+        // We have to make sure though that the height is set properly to fit
+        // the original image's aspect ratio.
+        let maxImageWidth = screenWidth / imageWidthDivisor
+        let newImageHeight = ((maxImageWidth * imageHeight) / imageWidth)
         
         self.imageViewWidthConstraint.constant = CGFloat(maxImageWidth)
         self.imageViewHeightConstraint.constant = newImageHeight

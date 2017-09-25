@@ -73,9 +73,7 @@ extension EarthDetailController {
     
     func getImageFor(_ asset: EarthAsset, coordinates: CLLocationCoordinate2D, completion: @escaping (EarthImage) -> Void) {
         EarthImageryAPI.sharedInstance.getEarthImage(lat: coordinates.latitude, long: coordinates.longitude, asset: asset) { earthImage, error in
-            
             if let error = error {
-                
                 AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                 return
             }

@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
         self.view.addSubview(closeButtonImageView)
         
         NSLayoutConstraint.activate([
-            closeButtonImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 22.0),
+            closeButtonImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30.0),
             closeButtonImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 22.0),
             closeButtonImageView.widthAnchor.constraint(equalToConstant: 44.0),
             closeButtonImageView.heightAnchor.constraint(equalToConstant: 44.0)

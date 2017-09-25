@@ -30,7 +30,7 @@ class EarthDetailController: UIViewController {
             return
         }
         
-        self.getAssetListFor(location) { assetList in
+        self.getAssetListFor(location) { [unowned self] assetList in
             guard let latestAsset = assetList.last else {
                 return
             }
@@ -56,7 +56,7 @@ class EarthDetailController: UIViewController {
 // MARK: Helper Methods
 extension EarthDetailController {
     func getAssetListFor(_ coordinates: CLLocationCoordinate2D, completion: @escaping ([EarthAsset]) -> Void) {
-        EarthImageryAPI.sharedInstance.getAssetList(lat: coordinates.latitude, long: coordinates.longitude) { assets, error in
+        EarthImageryAPI.sharedInstance.getAssetList(lat: coordinates.latitude, long: coordinates.longitude) { [unowned self] assets, error in
             if let error = error {
                 AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                 return
@@ -72,7 +72,7 @@ extension EarthDetailController {
     }
     
     func getImageFor(_ asset: EarthAsset, coordinates: CLLocationCoordinate2D, completion: @escaping (EarthImage) -> Void) {
-        EarthImageryAPI.sharedInstance.getEarthImage(lat: coordinates.latitude, long: coordinates.longitude, asset: asset) { earthImage, error in
+        EarthImageryAPI.sharedInstance.getEarthImage(lat: coordinates.latitude, long: coordinates.longitude, asset: asset) { [unowned self] earthImage, error in
             if let error = error {
                 AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self)
                 return
@@ -88,7 +88,7 @@ extension EarthDetailController {
     }
     
     func downloadImage(_ metadata: EarthImage, completion: @escaping (UIImage?, Error?) -> Void) {
-        EarthImageryAPI.sharedInstance.downloadFile(metadata.url, queryItems: nil) { data, error in
+        EarthImageryAPI.sharedInstance.downloadFile(metadata.url, queryItems: nil) { [unowned self] data, error in
             if let _ = error {
                 AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)

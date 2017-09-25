@@ -105,7 +105,7 @@ extension MarsController: UITextViewDelegate {
 // MARK: Helper Methods
 extension MarsController {
     func loadImage() {
-        MarsRoverAPI.sharedInstance.getImageMetadataFrom(.curiosity, camera: .fhaz, sol: sol) { images, error in
+        MarsRoverAPI.sharedInstance.getImageMetadataFrom(.curiosity, camera: .fhaz, sol: sol) { [unowned self, roverApi = MarsRoverAPI.sharedInstance] images, error in
             if let error = error {
                 AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self) { action in
                     self.dismiss(animated: true, completion: nil)
@@ -121,10 +121,10 @@ extension MarsController {
             }
             
             if let firstImage = images.first {
-                MarsRoverAPI.sharedInstance.downloadImage(firstImage) { image, error in
+                roverApi.downloadImage(firstImage) { image, error in
                     if let error = error {
                         print(error.localizedDescription)
-                        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { [unowned self] action in
+                        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { action in
                             self.dismiss(animated: true, completion: nil)
                         }
                     }
@@ -163,7 +163,7 @@ extension MarsController {
         self.view.drawHierarchy(in: screenshotBounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         // Redisplay elements after screenshot is taken.
         // This happens so fast you don't see them flicker.
         self.closeButtonImageView.isHidden = false

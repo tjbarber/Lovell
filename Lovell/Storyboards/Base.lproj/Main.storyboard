@@ -299,6 +299,53 @@
             </objects>
             <point key="canvasLocation" x="2503" y="-804"/>
         </scene>
+        <!--Earth Detail Controller-->
+        <scene sceneID="K1J-oz-km7">
+            <objects>
+                <viewController id="u5A-7g-1DB" customClass="EarthDetailController" customModule="Lovell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5S1-3R-V6n">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vAb-GX-HR4">
+                                <rect key="frame" x="128" y="256" width="512" height="512"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="512" id="Yv6-Zk-0lQ"/>
+                                    <constraint firstAttribute="width" constant="512" id="g9n-Pm-8nY"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-32-rVL">
+                                <rect key="frame" x="374" y="502" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.79826626710000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="vAb-GX-HR4" firstAttribute="centerY" secondItem="5S1-3R-V6n" secondAttribute="centerY" id="0Ob-38-1yP"/>
+                            <constraint firstItem="XOU-32-rVL" firstAttribute="centerY" secondItem="5S1-3R-V6n" secondAttribute="centerY" id="92i-4d-qK3"/>
+                            <constraint firstItem="XOU-32-rVL" firstAttribute="centerX" secondItem="5S1-3R-V6n" secondAttribute="centerX" id="Mkv-JH-mjQ"/>
+                            <constraint firstItem="vAb-GX-HR4" firstAttribute="centerX" secondItem="5S1-3R-V6n" secondAttribute="centerX" id="cMP-JF-G8U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rw0-vQ-nVJ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Lj5-5J-HbB" appends="YES" id="1PE-ya-iVw"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="XOU-32-rVL" id="yCh-hx-1RK"/>
+                        <outlet property="imageView" destination="vAb-GX-HR4" id="0y1-iw-QAr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcd-zk-b3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Lj5-5J-HbB">
+                    <connections>
+                        <action selector="closeModal:" destination="u5A-7g-1DB" id="0Xz-e2-XdJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1695" y="722"/>
+        </scene>
         <!--Mars Controller-->
         <scene sceneID="ZZL-30-toF">
             <objects>
@@ -463,6 +510,7 @@
                     </view>
                     <connections>
                         <outlet property="locationTextField" destination="EU7-nV-qG6" id="Tq8-dm-0SI"/>
+                        <segue destination="u5A-7g-1DB" kind="presentation" identifier="earthDetailSegue" id="tMN-PV-jmJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4T-7d-pbb" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,8 +11,11 @@ import CoreLocation
 
 class EarthController: DetailViewController {
     static let segueIdentifier = "earthSegue"
+    let earthDetailPresentAnimationController = ModalImagePresentationTransitionController()
+    let earthDetailDismissAnimationController = ModalImageDismissTransitionController()
+    
     let placeholderColor = UIColor(white: 1.0, alpha: 0.3)
-    var imageToDisplay: EarthImage?
+    var locationToDisplay: CLLocationCoordinate2D?
     
     @IBOutlet weak var locationTextField: UITextField!
     
@@ -21,6 +24,8 @@ class EarthController: DetailViewController {
     }
     
     @IBAction func getCoordinatesAndDisplayImage(_ sender: Any) {
+        self.dismissKeyboard(self)
+        
         guard let address = self.locationTextField.text else {
             AlertHelper.showAlert(withTitle: "Oops...", withMessage: "We need you to give us an address.", presentingViewController: self)
             return
@@ -38,14 +43,8 @@ class EarthController: DetailViewController {
                 return
             }
             
-            self.getAssetListFor(coordinates) { assetList in
-                if let latestAsset = assetList.last {
-                    self.getImageFor(latestAsset, coordinates: coordinates) { earthImage in
-                        self.imageToDisplay = earthImage
-                        //self.performSegue(withIdentifier: , sender: )
-                    }
-                }
-            }
+            self.locationToDisplay = coordinates
+            self.performSegue(withIdentifier: "earthDetailSegue", sender: self)
         }
     }
     
@@ -57,6 +56,19 @@ class EarthController: DetailViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "earthDetailSegue":
+                let destination = segue.destination as! EarthDetailController
+                destination.location = self.locationToDisplay
+                destination.modalPresentationStyle = .overFullScreen
+                destination.transitioningDelegate = self
+            default: return
+            }
+        }
     }
     
 }
@@ -94,42 +106,22 @@ extension EarthController {
         }
     }
     
-    func getAssetListFor(_ coordinates: CLLocationCoordinate2D, completion: @escaping ([EarthAsset]) -> Void) {
-        EarthImageryAPI.sharedInstance.getAssetList(lat: coordinates.latitude, long: coordinates.longitude) { assets, error in
-            if let error = error {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self)
-                return
-            }
-            
-            guard let assets = assets else {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "The server is current experiencing an issue. Please try again later.", presentingViewController: self)
-                return
-            }
-            
-            completion(assets)
-        }
-    }
-    
-    func getImageFor(_ asset: EarthAsset, coordinates: CLLocationCoordinate2D, completion: @escaping (EarthImage) -> Void) {
-        EarthImageryAPI.sharedInstance.getEarthImage(lat: coordinates.latitude, long: coordinates.longitude, asset: asset) { earthImage, error in
-            
-            if let error = error {
-                
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: error.localizedDescription, presentingViewController: self)
-                return
-            }
-            
-            guard let earthImage = earthImage else {
-                AlertHelper.showAlert(withTitle: "Something went wrong...", withMessage: "The server is current experiencing an issue. Please try again later.", presentingViewController: self)
-                return
-            }
-            
-            completion(earthImage)
-        }
-    }
-    
     func locationNotFoundAlert() {
         self.locationTextField.text = ""
         AlertHelper.showAlert(withTitle: "Oops...", withMessage: "We couldn't find this location. Please try another!", presentingViewController: self)
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension EarthController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        earthDetailPresentAnimationController.originFrame = CGRect.zero
+        return earthDetailPresentAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.locationToDisplay = nil
+        earthDetailDismissAnimationController.originFrame = CGRect.zero
+        return earthDetailDismissAnimationController
     }
 }

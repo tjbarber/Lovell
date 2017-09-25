@@ -11,8 +11,8 @@ import UIKit
 private let reuseIdentifier = "exploreCell"
 
 class ExploreController: UICollectionViewController {
-    private let exploreDetailPresentAnimationController = ExploreDetailPresentAnimationController()
-    private let exploreDetailDismissAnimationController = ExploreDetailDismissAnimationController()
+    private let exploreDetailPresentAnimationController = ModalImagePresentationTransitionController()
+    private let exploreDetailDismissAnimationController = ModalImageDismissTransitionController()
     static let segueIdentifier = "exploreSegue"
     
     var nextPage = 1

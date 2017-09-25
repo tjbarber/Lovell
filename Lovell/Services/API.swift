@@ -30,7 +30,10 @@ class API {
             }
         }
         
-        components.queryItems = queryItemsArray
+        if !queryItemsArray.isEmpty {
+            components.queryItems = queryItemsArray
+        }
+        
         guard let url = components.url else {
             // Cannot get URL from component object.
             return nil
@@ -63,6 +66,7 @@ class API {
             completion(nil, APIError.cannotCreateUrl)
             return
         }
+        
         let downloadTask = session.downloadTask(with: url) { location, response, error in
             if let error = error {
                 DispatchQueue.main.async {

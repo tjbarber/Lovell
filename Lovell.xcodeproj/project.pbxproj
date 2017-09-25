@@ -34,6 +34,8 @@
 		ACCA96A31F69B4FB00DD3A8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCA96A11F69B4FB00DD3A8F /* LaunchScreen.storyboard */; };
 		ACCA96AE1F69B4FB00DD3A8F /* LovellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96AD1F69B4FB00DD3A8F /* LovellTests.swift */; };
 		ACD5ED9C1F6AF36B0013EEE4 /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */; };
+		ACDE595B1F79958C00CE85A1 /* ModalImagePresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE595A1F79958C00CE85A1 /* ModalImagePresentTransition.swift */; };
+		ACDE595D1F79962C00CE85A1 /* ModalImageDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE595C1F79962C00CE85A1 /* ModalImageDismissTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		ACCA96AD1F69B4FB00DD3A8F /* LovellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovellTests.swift; sourceTree = "<group>"; };
 		ACCA96AF1F69B4FB00DD3A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
+		ACDE595A1F79958C00CE85A1 /* ModalImagePresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalImagePresentTransition.swift; sourceTree = "<group>"; };
+		ACDE595C1F79962C00CE85A1 /* ModalImageDismissTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalImageDismissTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */,
+				ACDE595A1F79958C00CE85A1 /* ModalImagePresentTransition.swift */,
+				ACDE595C1F79962C00CE85A1 /* ModalImageDismissTransition.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC3362D71F79618E009D6BA3 /* EarthDetailController.swift in Sources */,
+				ACDE595D1F79962C00CE85A1 /* ModalImageDismissTransition.swift in Sources */,
 				ACCA969B1F69B4FB00DD3A8F /* HomeController.swift in Sources */,
 				ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */,
 				AC3362D51F795C08009D6BA3 /* EarthImage.swift in Sources */,
@@ -356,6 +363,7 @@
 				AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */,
 				AC3362D31F7949C0009D6BA3 /* EarthAsset.swift in Sources */,
 				AC3362D11F79493F009D6BA3 /* EarthImageryAPI.swift in Sources */,
+				ACDE595B1F79958C00CE85A1 /* ModalImagePresentTransition.swift in Sources */,
 				AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */,
 				AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */,
 				AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */,

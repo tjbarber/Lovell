@@ -6,6 +6,18 @@
 //  Copyright © 2017 Novel. All rights reserved.
 //
 
+// My thoughts on performance testing:
+// Using Xcode's Instruments, I used the Time Profiler to spot any bottlenecks holding up the app
+// CPU wise, the most intensive part is taking a screenshot of the Mars Rover postcard.
+// Past that, the worst bottleneck is going to be your network. Because of the way the NASA API is constructed
+// Sometimes we need to make a couple HTTP requests to be able to get the data we want.
+// On this crappy Starbucks network I'm on, this can take a few seconds. At home on my crappy connection it can take
+// a few seconds. Because of this I've made sure to make use of plenty of activity indicators so it's obvious to
+// the end user that something is happening. That said, the wait is minimal.
+
+// This app was mainly developed and tested on an iPad Air 2 and the iPad Pro simulator.
+// No third party libraries were used. ヽ(´ー｀)ノ
+
 import UIKit
 
 @UIApplicationMain

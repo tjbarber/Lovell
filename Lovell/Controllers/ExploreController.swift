@@ -152,6 +152,11 @@ extension ExploreController {
             }
             
             if let hubbleImageMetadata = hubbleImageMetadata {
+                if hubbleImageMetadata.isEmpty {
+                    self.allowLoadFromScroll = false
+                    return
+                }
+                
                 for metadata in hubbleImageMetadata {
                     let hubbleImage = HubbleImage(withMetadata: metadata)
                     self.imageDataSource.append(hubbleImage)

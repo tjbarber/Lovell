@@ -6,6 +6,8 @@
 //  Copyright © 2017 Novel. All rights reserved.
 //
 
+// This file is not currently used, but will be in the near future to pull data directly from NASA's API.
+
 import UIKit
 
 enum MarsRoverAPIError: Error {

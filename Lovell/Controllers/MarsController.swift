@@ -10,18 +10,9 @@ import UIKit
 
 class MarsController: DetailViewController {
     static let segueIdentifier = "marsSegue"
-    // In this version of the app we're only going to display a single selected image from Curiosity.
-    // The first one from it's 1000th day is awesome so we're going with that.
-    // In the final version we're going to have a currated collection that the server is going to randomly pick from.
-    let sol = 1000
+    
     let placeholderColor = UIColor.init(white: 0.8, alpha: 1.0)
-    var marsImage: UIImage? {
-        didSet {
-            self.marsImageView.image = self.marsImage
-            self.activityIndicator.stopAnimating()
-            animateImageView()
-        }
-    }
+    var marsImage: UIImage?
     
     @IBOutlet weak var marsImageView: UIImageView!
     @IBOutlet weak var recipientStackView: UIStackView!
@@ -29,7 +20,6 @@ class MarsController: DetailViewController {
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func stopEditing(_ sender: UITapGestureRecognizer) {
         self.recipientName.resignFirstResponder()
@@ -68,11 +58,14 @@ class MarsController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageTextView.text = "Message:"
-        messageTextView.textColor = placeholderColor
-        messageTextView.delegate = self
-        
-        loadImage()
+        self.messageTextView.text = "Message:"
+        self.messageTextView.textColor = placeholderColor
+        self.messageTextView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.animateImageView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,39 +97,6 @@ extension MarsController: UITextViewDelegate {
 
 // MARK: Helper Methods
 extension MarsController {
-    func loadImage() {
-        MarsRoverAPI.sharedInstance.getImageMetadataFrom(.curiosity, camera: .fhaz, sol: sol) { [unowned self, roverApi = MarsRoverAPI.sharedInstance] images, error in
-            if let error = error {
-                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: error.localizedDescription, presentingViewController: self) { action in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                return
-            }
-            
-            guard let images = images else {
-                AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.pleaseTryAgainLater.rawValue, presentingViewController: self) { action in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                return
-            }
-            
-            if let firstImage = images.first {
-                roverApi.downloadImage(firstImage) { image, error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        AlertHelper.showAlert(withTitle: ErrorMessages.somethingWentWrong.rawValue, withMessage: ErrorMessages.internalServerError.rawValue, presentingViewController: self) { action in
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                    }
-                    
-                    if let image = image {
-                        self.marsImage = image
-                    }
-                }
-            }
-        }
-    }
-    
     func animateImageView() {
         UIView.animate(withDuration: 1.0) {
             self.marsImageView.alpha = 0.2

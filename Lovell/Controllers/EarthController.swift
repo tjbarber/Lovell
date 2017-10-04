@@ -50,7 +50,7 @@ class EarthController: DetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationTextField.attributedPlaceholder = NSAttributedString(string: "Where do you want to visit?", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        locationTextField.attributedPlaceholder = NSAttributedString(string: "Enter An Address Here", attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
     }
 
     override func didReceiveMemoryWarning() {

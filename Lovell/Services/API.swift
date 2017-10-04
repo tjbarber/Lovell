@@ -53,6 +53,7 @@ class API {
             completion(nil, APIError.cannotCreateUrl)
             return
         }
+        
         let dataTask = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -73,7 +74,9 @@ class API {
             return
         }
         
-        let downloadTask = session.downloadTask(with: url) { location, response, error in
+        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60.0)
+        
+        let downloadTask = session.downloadTask(with: request) { location, response, error in
             if let error = error {
                 DispatchQueue.main.async {
                     completion(nil, error)

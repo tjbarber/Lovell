@@ -23,7 +23,6 @@ class PendingHubbleImageOperations {
 class HubbleImageDownloader: Operation {
     weak var image: HubbleImage?
     let imageRootUrl = "http://hubblesite.org/api/v3/image"
-    let imageCache = AutoPurgingImageCache()
     let imageDownloader = ImageDownloader()
     
     init(image: HubbleImage) {
@@ -79,35 +78,18 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
-                    let thumbnailImageDataRequest = URLRequest(url: thumbnailImageDataURL)
+                    let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
                     
-                    // Get cached image
-                    let cachedThumbnail = imageCache.image(for: thumbnailImageDataRequest, withIdentifier: smallestImage.fileUrl)
-                    
-                    if cachedThumbnail !== nil {
-                        image.thumbnail = cachedThumbnail
+                    guard let thumbnail = UIImage(data: thumbnailImageData) else {
+                        image.thumbnailImageState = .failed
                         return
                     }
                     
-                    // File is new, let's download
-                    let semaphore = DispatchSemaphore(value: 0)
-                    imageDownloader.download(thumbnailImageDataRequest) { [unowned self] response in
-                        if let thumbnail = response.result.value {
-                            
-                            // Resize the thumbnail and convert it to JPEG
-                            guard let resizedThumbnail = self.resize(image: thumbnail) else { return }
-                            guard let convertedThumbnail = self.convertToJPG(image: resizedThumbnail) else { return }
-                            
-                            // Cache the resized and converted image
-                            self.imageCache.add(convertedThumbnail, for: thumbnailImageDataRequest, withIdentifier: smallestImage.fileUrl)
-                        
-                            image.thumbnail = resizedThumbnail
-                            image.thumbnailImageState = .downloaded
-                            semaphore.signal()
-                        }
-                    }
+                    guard let resizedThumbnail = self.resize(image: thumbnail) else { return }
+                    guard let convertedThumbnail = self.convertToJPG(image: resizedThumbnail) else { return }
                     
-                    semaphore.wait()
+                    image.thumbnail = convertedThumbnail
+                    image.thumbnailImageState = .downloaded
                 }
                 
             } catch (let e) {
@@ -128,6 +110,8 @@ class HubbleImageDownloader: Operation {
         image.draw(in: CGRect(origin: CGPoint.zero, size: imageSize))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
         return scaledImage
     }
     

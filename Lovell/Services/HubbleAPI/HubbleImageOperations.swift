@@ -91,9 +91,17 @@ class HubbleImageDownloader: Operation {
                     
                     // File is new, let's download
                     let semaphore = DispatchSemaphore(value: 0)
-                    imageDownloader.download(thumbnailImageDataRequest) { response in
+                    imageDownloader.download(thumbnailImageDataRequest) { [unowned self] response in
                         if let thumbnail = response.result.value {
-                            image.thumbnail = thumbnail
+                            
+                            // Resize the thumbnail and convert it to JPEG
+                            guard let resizedThumbnail = self.resize(image: thumbnail) else { return }
+                            guard let convertedThumbnail = self.convertToJPG(image: resizedThumbnail) else { return }
+                            
+                            // Cache the resized and converted image
+                            self.imageCache.add(convertedThumbnail, for: thumbnailImageDataRequest, withIdentifier: smallestImage.fileUrl)
+                        
+                            image.thumbnail = resizedThumbnail
                             image.thumbnailImageState = .downloaded
                             semaphore.signal()
                         }
@@ -108,5 +116,23 @@ class HubbleImageDownloader: Operation {
                 print(e.localizedDescription)
             }
         }
+    }
+    
+    func resize(image: UIImage) -> UIImage? {
+        let fixedWidth: CGFloat = 400.0
+        let aspectRatio = image.size.width / image.size.height
+        let scale: CGFloat = 0.0
+        let imageSize = CGSize(width: fixedWidth, height: fixedWidth / aspectRatio)
+        
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, scale)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: imageSize))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
+    
+    func convertToJPG(image: UIImage) -> UIImage? {
+        guard let data = UIImageJPEGRepresentation(image, 0.8) else { return nil }
+        return UIImage(data: data)
     }
 }

@@ -41,7 +41,7 @@ class ExploreCell: UICollectionViewCell {
             return
         }
         
-        let downloader = HubbleImageDownloader(image: image)
+        let downloader = HubbleImageDownloader(image: image)        
         
         downloader.completionBlock = { [weak collectionView] in
             DispatchQueue.main.async {

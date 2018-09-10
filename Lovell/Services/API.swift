@@ -10,6 +10,7 @@
 // This object handles basic HTTP requests, URL object construction, and file downloads.
 
 import Foundation
+import Alamofire
 
 enum APIError: Error {
     case cannotCreateUrl

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PendingHubbleImageOperations {
     static let sharedInstance = PendingHubbleImageOperations()
@@ -22,6 +23,8 @@ class PendingHubbleImageOperations {
 class HubbleImageDownloader: Operation {
     weak var image: HubbleImage?
     let imageRootUrl = "http://hubblesite.org/api/v3/image"
+    let imageCache = AutoPurgingImageCache()
+    let imageDownloader = ImageDownloader()
     
     init(image: HubbleImage) {
         self.image = image
@@ -76,15 +79,27 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
-                    let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
+                    let thumbnailImageDataRequest = URLRequest(url: thumbnailImageDataURL)
                     
-                    guard let thumbnail = UIImage(data: thumbnailImageData) else {
-                        image.thumbnailImageState = .failed
+                    // Get cached image
+                    let cachedThumbnail = imageCache.image(for: thumbnailImageDataRequest, withIdentifier: smallestImage.fileUrl)
+                    
+                    if cachedThumbnail !== nil {
+                        image.thumbnail = cachedThumbnail
                         return
                     }
                     
-                    image.thumbnail = thumbnail
-                    image.thumbnailImageState = .downloaded
+                    // File is new, let's download
+                    let semaphore = DispatchSemaphore(value: 0)
+                    imageDownloader.download(thumbnailImageDataRequest) { response in
+                        if let thumbnail = response.result.value {
+                            image.thumbnail = thumbnail
+                            image.thumbnailImageState = .downloaded
+                            semaphore.signal()
+                        }
+                    }
+                    
+                    semaphore.wait()
                 }
                 
             } catch (let e) {

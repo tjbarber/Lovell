@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 
 class PendingHubbleImageOperations {
     static let sharedInstance = PendingHubbleImageOperations()
@@ -23,7 +22,6 @@ class PendingHubbleImageOperations {
 class HubbleImageDownloader: Operation {
     weak var image: HubbleImage?
     let imageRootUrl = "http://hubblesite.org/api/v3/image"
-    let imageDownloader = ImageDownloader()
     
     init(image: HubbleImage) {
         self.image = image

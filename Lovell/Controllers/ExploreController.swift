@@ -104,7 +104,10 @@ extension ExploreController: UICollectionViewDelegateFlowLayout {
 extension ExploreController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedImage = self.imageDataSource[indexPath.row]
-        performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
+        
+        if self.selectedImage?.thumbnailImageState == .downloaded {
+             performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
+        }
     }
     
     

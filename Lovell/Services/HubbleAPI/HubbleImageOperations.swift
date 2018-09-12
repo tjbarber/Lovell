@@ -10,7 +10,9 @@ import UIKit
 
 class PendingHubbleImageOperations {
     static let sharedInstance = PendingHubbleImageOperations()
-    private init() {}
+    private init() {
+        downloadQueue.maxConcurrentOperationCount = 2
+    }
     lazy var downloadsInProgress = [IndexPath: Operation]()
     lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
@@ -76,6 +78,12 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
+                    if let cachedImage = ImageCache.sharedInstance.cache[smallestImage.fileUrl] {
+                        image.thumbnail = cachedImage
+                        image.thumbnailImageState = .downloaded
+                        return
+                    }
+                    
                     let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
                     
                     guard let thumbnail = UIImage(data: thumbnailImageData) else {
@@ -85,6 +93,7 @@ class HubbleImageDownloader: Operation {
                     
                     guard let resizedThumbnail = self.resize(image: thumbnail) else { return }
                     guard let convertedThumbnail = self.convertToJPG(image: resizedThumbnail) else { return }
+                    ImageCache.sharedInstance.cache[smallestImage.fileUrl] = convertedThumbnail
                     
                     image.thumbnail = convertedThumbnail
                     image.thumbnailImageState = .downloaded

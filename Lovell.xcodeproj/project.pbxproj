@@ -18,6 +18,7 @@
 		AC1F9E9D1F705171009BAC45 /* HubbleImageFileDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */; };
 		AC2861891F742FAA00EB2EE2 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */; };
 		AC3362D71F79618E009D6BA3 /* EarthDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3362D61F79618D009D6BA3 /* EarthDetailController.swift */; };
+		AC3615AF2148B3B600E39860 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3615AE2148B3B600E39860 /* ImageCache.swift */; };
 		AC3793171F72AFA800195686 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3793161F72AFA800195686 /* API.swift */; };
 		AC3793191F72B00D00195686 /* MarsRoverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3793181F72B00D00195686 /* MarsRoverAPI.swift */; };
 		AC37931B1F72B1BF00195686 /* MarsRoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37931A1F72B1BF00195686 /* MarsRoverImage.swift */; };
@@ -46,19 +47,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		ACBBB4BA1F6C7A6F009AF783 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		AC00DE2B1F6B1F930051905F /* MarsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsController.swift; sourceTree = "<group>"; };
 		AC00DE2D1F6B1FA40051905F /* EarthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthController.swift; sourceTree = "<group>"; };
@@ -71,12 +59,17 @@
 		AC1F9E9C1F705171009BAC45 /* HubbleImageFileDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleImageFileDescriptor.swift; sourceTree = "<group>"; };
 		AC2861881F742FAA00EB2EE2 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		AC3362D61F79618D009D6BA3 /* EarthDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthDetailController.swift; sourceTree = "<group>"; };
+		AC3615AE2148B3B600E39860 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		AC3793161F72AFA800195686 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AC3793181F72B00D00195686 /* MarsRoverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverAPI.swift; sourceTree = "<group>"; };
 		AC37931A1F72B1BF00195686 /* MarsRoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverImage.swift; sourceTree = "<group>"; };
 		AC7523BC1F71626500B25665 /* ExploreDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailController.swift; sourceTree = "<group>"; };
 		AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleAPI.swift; sourceTree = "<group>"; };
 		AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		ACB5F0A92146F83D00AC816E /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		ACB5F0AA2146F83D00AC816E /* AlamofireImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AlamofireImage.framework.dSYM; path = Carthage/Build/iOS/AlamofireImage.framework.dSYM; sourceTree = "<group>"; };
+		ACB5F0AD2146F84D00AC816E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		ACB5F0AE2146F84D00AC816E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -133,12 +126,24 @@
 			path = MarsRoverAPI;
 			sourceTree = "<group>";
 		};
+		ACB5F0A82146F83D00AC816E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5F0AE2146F84D00AC816E /* Alamofire.framework */,
+				ACB5F0AD2146F84D00AC816E /* AlamofireImage.framework */,
+				ACB5F0A92146F83D00AC816E /* Alamofire.framework.dSYM */,
+				ACB5F0AA2146F83D00AC816E /* AlamofireImage.framework.dSYM */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ACCA968C1F69B4FB00DD3A8F = {
 			isa = PBXGroup;
 			children = (
 				ACCA96971F69B4FB00DD3A8F /* Lovell */,
 				ACCA96AC1F69B4FB00DD3A8F /* LovellTests */,
 				ACCA96961F69B4FB00DD3A8F /* Products */,
+				ACB5F0A82146F83D00AC816E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +209,7 @@
 				AC1F9E931F6C7E0F009BAC45 /* HubbleAPI */,
 				ACD5ED9B1F6AF36B0013EEE4 /* MotionService.swift */,
 				AC3793161F72AFA800195686 /* API.swift */,
+				AC3615AE2148B3B600E39860 /* ImageCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -238,7 +244,6 @@
 				ACCA96911F69B4FB00DD3A8F /* Sources */,
 				ACCA96921F69B4FB00DD3A8F /* Frameworks */,
 				ACCA96931F69B4FB00DD3A8F /* Resources */,
-				ACBBB4BA1F6C7A6F009AF783 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,7 +279,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Novel;
 				TargetAttributes = {
 					ACCA96941F69B4FB00DD3A8F = {
@@ -350,6 +355,7 @@
 				ACDE595B1F79958C00CE85A1 /* ModalImagePresentTransition.swift in Sources */,
 				AC1F9E991F7033D0009BAC45 /* HubbleImageOperations.swift in Sources */,
 				AC00DE321F6B228D0051905F /* DetailViewController.swift in Sources */,
+				AC3615AF2148B3B600E39860 /* ImageCache.swift in Sources */,
 				AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */,
 				AC1F9E951F6C7E24009BAC45 /* HubbleImageMetadata.swift in Sources */,
 				AC3793171F72AFA800195686 /* API.swift in Sources */,
@@ -410,6 +416,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -417,6 +424,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -444,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -467,6 +475,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -474,6 +483,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -482,7 +492,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -495,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -507,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -518,6 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -527,6 +539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -538,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

@@ -78,7 +78,7 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
-                    if let cachedImage = ImageCache.sharedInstance.cache[smallestImage.fileUrl] {
+                    if let cachedImage = ImageCache.sharedInstance.get(fileUrl: thumbnailImageDataURL) {
                         image.thumbnail = cachedImage
                         image.thumbnailImageState = .downloaded
                         return
@@ -93,7 +93,8 @@ class HubbleImageDownloader: Operation {
                     
                     guard let resizedThumbnail = self.resize(image: thumbnail) else { return }
                     guard let convertedThumbnail = self.convertToJPG(image: resizedThumbnail) else { return }
-                    ImageCache.sharedInstance.cache[smallestImage.fileUrl] = convertedThumbnail
+
+                    ImageCache.sharedInstance.set(fileUrl: thumbnailImageDataURL, image: convertedThumbnail)
                     
                     image.thumbnail = convertedThumbnail
                     image.thumbnailImageState = .downloaded

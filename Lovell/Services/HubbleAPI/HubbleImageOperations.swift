@@ -84,6 +84,10 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
+                    if self.isCancelled {
+                        return
+                    }
+                    
                     let thumbnailImageData = try Data(contentsOf: thumbnailImageDataURL)
                     
                     guard let thumbnail = UIImage(data: thumbnailImageData) else {

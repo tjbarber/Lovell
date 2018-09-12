@@ -106,6 +106,15 @@ extension ExploreController {
         self.selectedImage = self.imageDataSource[indexPath.row]
         performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
     }
+    
+    
+}
+
+extension ExploreController {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        PendingHubbleImageOperations.sharedInstance.downloadQueue.cancelAllOperations()
+        collectionView?.reloadData()
+    }
 }
 
 // MARK: UICollectionViewDataSource

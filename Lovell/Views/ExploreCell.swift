@@ -28,8 +28,10 @@ class ExploreCell: UICollectionViewCell {
         switch (image.thumbnailImageState) {
         case .downloaded:
             self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
         case .failed:
             self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
         case .new:
             self.activityIndicator.startAnimating()
             ExploreCell.download(image: image, indexPath: indexPath, collectionView: collectionView)

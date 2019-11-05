@@ -13,6 +13,11 @@ jobs:
     steps:
       - checkout
 
+      # Upgrade Brews
+      - run:
+          name: Update Brew
+          command: brew upgrade
+
       # Install Carthage
       - run:
           name: Install Carthage

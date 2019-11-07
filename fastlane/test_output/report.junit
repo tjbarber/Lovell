@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='LovellTests.xctest' tests='3' failures='0'>
+  <testsuite name='LovellTests.LovellTests' tests='3' failures='0'>
+    <testcase classname='LovellTests.LovellTests' name='testFileDownload' time='0.144'/>
+    <testcase classname='LovellTests.LovellTests' name='testHubbleImageData' time='0.087'/>
+    <testcase classname='LovellTests.LovellTests' name='testMarsRoverData' time='0.521'/>
+  </testsuite>
+</testsuites>

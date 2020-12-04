@@ -36,7 +36,7 @@ class ImageCache {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let imagePath = "\(documentsPath)/\(fileName)"
         
-        if let imageData = UIImageJPEGRepresentation(image, 1.0) {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
             let saveUrl = URL(fileURLWithPath: imagePath)
             do {
                 try imageData.write(to: saveUrl)

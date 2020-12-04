@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,8 @@
 		AC3793191F72B00D00195686 /* MarsRoverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3793181F72B00D00195686 /* MarsRoverAPI.swift */; };
 		AC37931B1F72B1BF00195686 /* MarsRoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37931A1F72B1BF00195686 /* MarsRoverImage.swift */; };
 		AC7523BD1F71626500B25665 /* ExploreDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7523BC1F71626500B25665 /* ExploreDetailController.swift */; };
+		AC867F672579B8E8009E3435 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AC867F662579B8E8009E3435 /* Alamofire */; };
+		AC867F6C2579B907009E3435 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = AC867F6B2579B907009E3435 /* AlamofireImage */; };
 		AC89D9BB1F6C356F007ECDCE /* HubbleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */; };
 		AC89D9BD1F6C3941007ECDCE /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */; };
 		ACCA96991F69B4FB00DD3A8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */; };
@@ -66,10 +68,6 @@
 		AC7523BC1F71626500B25665 /* ExploreDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailController.swift; sourceTree = "<group>"; };
 		AC89D9BA1F6C356F007ECDCE /* HubbleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubbleAPI.swift; sourceTree = "<group>"; };
 		AC89D9BC1F6C3941007ECDCE /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
-		ACB5F0A92146F83D00AC816E /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
-		ACB5F0AA2146F83D00AC816E /* AlamofireImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AlamofireImage.framework.dSYM; path = Carthage/Build/iOS/AlamofireImage.framework.dSYM; sourceTree = "<group>"; };
-		ACB5F0AD2146F84D00AC816E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
-		ACB5F0AE2146F84D00AC816E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		ACCA96951F69B4FB00DD3A8F /* Lovell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA96981F69B4FB00DD3A8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACCA969A1F69B4FB00DD3A8F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -91,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC867F672579B8E8009E3435 /* Alamofire in Frameworks */,
+				AC867F6C2579B907009E3435 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,24 +126,12 @@
 			path = MarsRoverAPI;
 			sourceTree = "<group>";
 		};
-		ACB5F0A82146F83D00AC816E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				ACB5F0AE2146F84D00AC816E /* Alamofire.framework */,
-				ACB5F0AD2146F84D00AC816E /* AlamofireImage.framework */,
-				ACB5F0A92146F83D00AC816E /* Alamofire.framework.dSYM */,
-				ACB5F0AA2146F83D00AC816E /* AlamofireImage.framework.dSYM */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		ACCA968C1F69B4FB00DD3A8F = {
 			isa = PBXGroup;
 			children = (
 				ACCA96971F69B4FB00DD3A8F /* Lovell */,
 				ACCA96AC1F69B4FB00DD3A8F /* LovellTests */,
 				ACCA96961F69B4FB00DD3A8F /* Products */,
-				ACB5F0A82146F83D00AC816E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,6 +238,10 @@
 			dependencies = (
 			);
 			name = Lovell;
+			packageProductDependencies = (
+				AC867F662579B8E8009E3435 /* Alamofire */,
+				AC867F6B2579B907009E3435 /* AlamofireImage */,
+			);
 			productName = Lovell;
 			productReference = ACCA96951F69B4FB00DD3A8F /* Lovell.app */;
 			productType = "com.apple.product-type.application";
@@ -279,11 +271,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Novel;
 				TargetAttributes = {
 					ACCA96941F69B4FB00DD3A8F = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1200;
 						ProvisioningStyle = Automatic;
 					};
 					ACCA96A81F69B4FB00DD3A8F = {
@@ -302,6 +295,10 @@
 				Base,
 			);
 			mainGroup = ACCA968C1F69B4FB00DD3A8F;
+			packageReferences = (
+				AC867F652579B8E8009E3435 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AC867F6A2579B907009E3435 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = ACCA96961F69B4FB00DD3A8F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -427,6 +424,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -452,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -486,6 +484,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -505,10 +504,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -525,12 +525,15 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Lovell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -547,12 +550,15 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Lovell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.Lovell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -565,7 +571,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				INFOPLIST_FILE = LovellTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.LovellTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -582,7 +592,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
 				INFOPLIST_FILE = LovellTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Novel.LovellTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -622,6 +636,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC867F652579B8E8009E3435 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+		AC867F6A2579B907009E3435 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC867F662579B8E8009E3435 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC867F652579B8E8009E3435 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AC867F6B2579B907009E3435 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC867F6A2579B907009E3435 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ACCA968D1F69B4FB00DD3A8F /* Project object */;
 }

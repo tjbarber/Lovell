@@ -26,7 +26,7 @@ class EarthDetailController: UIViewController {
         if let location = self.location {
             let mapPin = MKPointAnnotation()
             mapPin.coordinate = location
-            self.mapView.region = MKCoordinateRegion(center: location, span: MKCoordinateSpanMake(0.005, 0.005))
+            self.mapView.region = MKCoordinateRegion(center: location, span: MKCoordinateSpan.init(latitudeDelta: 0.005, longitudeDelta: 0.005))
             self.mapView.addAnnotation(mapPin)
         }
     }

@@ -128,7 +128,7 @@ class HubbleImageDownloader: Operation {
     }
     
     func convertToJPG(image: UIImage) -> UIImage? {
-        guard let data = UIImageJPEGRepresentation(image, 0.8) else { return nil }
+        guard let data = image.jpegData(compressionQuality: 0.8) else { return nil }
         return UIImage(data: data)
     }
 }

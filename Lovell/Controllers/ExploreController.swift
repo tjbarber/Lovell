@@ -84,11 +84,12 @@ extension ExploreController: UICollectionViewDelegateFlowLayout {
         let cellWidth = (screen.bounds.size.width / 2)
         // No matter what, the cell's width and height are at a 16:9 aspect ratio
         let cellHeight = (cellWidth / 16) * 9
+        
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 0, 0, 0)
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -109,8 +110,6 @@ extension ExploreController {
              performSegue(withIdentifier: ExploreDetailController.segueIdentifier, sender: nil)
         }
     }
-    
-    
 }
 
 extension ExploreController {
@@ -185,7 +184,7 @@ extension ExploreController {
 extension ExploreController {
     func setBarButtonFont() {
         if let font = UIFont.init(name: "AvenirNext-Regular", size: 17.0) {
-            self.closeButton.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+            self.closeButton.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         }
     }
 }

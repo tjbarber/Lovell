@@ -127,7 +127,7 @@ extension HomeController {
             })
             
             if let timer = self.motionTimer {
-                RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
+                RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
             }
         }
     }
@@ -140,7 +140,14 @@ extension HomeController {
             NSLayoutConstraint.deactivate([heightConstraint])
         }
         
-        let heightConstraint = NSLayoutConstraint.init(item: exploreContainingView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: exploreContainingViewGoldenRatioSize)
+        let heightConstraint = NSLayoutConstraint.init(
+            item: exploreContainingView as Any,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1.0,
+            constant: exploreContainingViewGoldenRatioSize)
         self.exploreContainingViewHeightConstraint = heightConstraint
         NSLayoutConstraint.activate([heightConstraint])
     }

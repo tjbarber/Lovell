@@ -80,8 +80,7 @@ extension ExploreController: UIViewControllerTransitioningDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ExploreController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screen = UIScreen.main
-        let cellWidth = (screen.bounds.size.width / 2)
+        let cellWidth = (view.bounds.size.width / 2)
         // No matter what, the cell's width and height are at a 16:9 aspect ratio
         let cellHeight = (cellWidth / 16) * 9
         

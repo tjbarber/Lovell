@@ -11,7 +11,7 @@ import UIKit
 class PendingHubbleImageOperations {
     static let sharedInstance = PendingHubbleImageOperations()
     private init() {
-        downloadQueue.maxConcurrentOperationCount = 2
+        downloadQueue.maxConcurrentOperationCount = 4
     }
     lazy var downloadsInProgress = [IndexPath: Operation]()
     lazy var downloadQueue: OperationQueue = {
@@ -23,7 +23,7 @@ class PendingHubbleImageOperations {
 
 class HubbleImageDownloader: Operation {
     weak var image: HubbleImage?
-    let imageRootUrl = "http://hubblesite.org/api/v3/image"
+    let imageRootUrl = "https://hubblesite.org/api/v3/image"
     
     init(image: HubbleImage) {
         self.image = image
@@ -54,7 +54,7 @@ class HubbleImageDownloader: Operation {
                 image.details = imageDetails
                 let sortedImageDetails = image.details?.imageFiles.filter({
                     let fileUrlExtension: String = NSString(string: $0.fileUrl).pathExtension
-                    return ["jpg","png"].contains(fileUrlExtension)
+                    return ["jpg","png","tif"].contains(fileUrlExtension)
                 })
                 
                 if let sortedImageDetails = sortedImageDetails {
@@ -69,7 +69,7 @@ class HubbleImageDownloader: Operation {
                         return
                     }
                     
-                    guard let thumbnailImageDataURL = URL(string: smallestImage.fileUrl) else {
+                    guard let thumbnailImageDataURL = URL(string: "https:\(smallestImage.fileUrl)") else {
                         image.thumbnailImageState = .failed
                         return
                     }
